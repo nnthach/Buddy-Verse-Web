@@ -1,0 +1,37 @@
+@use '~/styles/variable.module.scss';
+
+$breakpoints: (
+  phone: 576px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1200px,
+);
+
+@mixin respond-to($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin btn($width, $height, $radius, $bgcolor, $color) {
+  outline: none;
+  border: none;
+  width: $width;
+  height: $height;
+  background-color: $bgcolor;
+  color: $color;
+  border-radius: $radius;
+  cursor: pointer;
+}
+
+@mixin flexBoxStyle($align, $justify, $gap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin hoverWhiteBtn($bgcolor, $color) {
+  background-color: $bgcolor;
+  color: $color;
+}
