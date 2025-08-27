@@ -1,7 +1,8 @@
+import { forwardRef } from 'react';
 import styles from './Membership.module.scss';
 import { IoIosCloseCircle, IoIosCheckmarkCircle } from 'react-icons/io';
 
-function Membership() {
+const Membership = forwardRef((props, ref) => {
   const membershipPlansData = [
     {
       info: {
@@ -61,7 +62,7 @@ function Membership() {
     },
   ];
   return (
-    <div className={styles.wrap}>
+    <div ref={ref} className={styles.wrap}>
       <div className={styles.container}>
         <h5>Membership</h5>
         <p className={styles.tagline}>Unlock a better experience</p>
@@ -110,6 +111,6 @@ function Membership() {
       </div>
     </div>
   );
-}
+});
 
 export default Membership;

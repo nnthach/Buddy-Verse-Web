@@ -3,10 +3,11 @@ import leafImg from '~/assets/images/leaf.webp';
 import chatImg from '~/assets/images/chat.webp';
 import safeImg from '~/assets/images/safe.webp';
 import connectImg from '~/assets/images/connect.webp';
+import { forwardRef } from 'react';
 
-function AboutUs() {
+const AboutUs = forwardRef((props, ref) => {
   return (
-    <div className={styles.wrap}>
+    <div ref={ref} className={styles.wrap}>
       <div className={styles.container}>
         <h5>About Buddy Verse</h5>
         <p className={styles.tagline}>Discover the story and vision behind BuddyVerse.</p>
@@ -54,6 +55,6 @@ function AboutUs() {
       </div>
     </div>
   );
-}
+});
 
 export default AboutUs;

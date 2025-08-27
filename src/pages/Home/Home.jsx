@@ -6,20 +6,23 @@ import OurGoal from '~/pages/Home/components/OurGoal/OurGoal';
 import AboutUs from '~/pages/Home/components/AboutUs/AboutUs';
 import Membership from '~/pages/Home/components/Membership/Membership';
 import Footer from '~/components/Footer/Footer';
-// import appstore from '~/assets/images/appstore.webp';
+import { useContext } from 'react';
+import { SideBarContext } from '~/context/SidebarContext';
 
 function Home() {
+  const { aboutRefSidebar, goalsRefSidebar, membershipRefSidebar } = useContext(SideBarContext);
+
   return (
     <>
-      <Header />
+      <Header aboutRef={aboutRefSidebar} goalsRef={goalsRefSidebar} membershipRef={membershipRefSidebar} />
       <div className={styles.wrap}>
         <Banner />
 
-        <AboutUs />
+        <AboutUs ref={aboutRefSidebar} />
 
-        <OurGoal />
+        <OurGoal ref={goalsRefSidebar} />
 
-        <Membership />
+        <Membership ref={membershipRefSidebar} />
       </div>
       <Footer />
     </>

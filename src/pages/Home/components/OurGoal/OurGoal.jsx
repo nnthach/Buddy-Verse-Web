@@ -7,9 +7,9 @@ import connectImg4 from '~/assets/images/goal_connect4.webp';
 import connectImg5 from '~/assets/images/goal_connect5.webp';
 import connectImg6 from '~/assets/images/goal_connect6.webp';
 import SliderSimple from '~/components/SliderSimple/SliderSimple';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
-function OurGoal() {
+const OurGoal = forwardRef((props, ref) => {
   const [currentImg, setCurrentImg] = useState(0);
 
   const imgData = [connectImg, connectImg2, connectImg3, connectImg4, connectImg5, connectImg6];
@@ -23,7 +23,7 @@ function OurGoal() {
   };
 
   return (
-    <div className={styles['our-goals']}>
+    <div ref={ref} className={styles['our-goals']}>
       <div className={styles.container}>
         <h5>Our Goals</h5>
         <p className={styles.tagline}>We aim to make technology a bridge to real human connection.</p>
@@ -47,6 +47,6 @@ function OurGoal() {
       </div>
     </div>
   );
-}
+});
 
 export default OurGoal;

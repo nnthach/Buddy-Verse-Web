@@ -61,5 +61,14 @@
       color: white;
       text-align: center;
     }
+
+    .logo-download {
+      @include flexBoxStyle(center, none, 8px);
+      margin-top: 15px;
+      img {
+        width: 120px;
+        cursor: pointer;
+      }
+    }
   }
 }

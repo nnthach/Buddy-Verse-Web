@@ -66,3 +66,12 @@
     }
   }
 }
+
+.scroll {
+  background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.1));
+  transition: all 0.3 ease;
+
+  @include respond-to(phone) {
+    display: none;
+  }
+}

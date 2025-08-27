@@ -1,6 +1,8 @@
 import styles from './Banner.module.scss';
 import bannerHome from '~/assets/images/bannerhome.webp';
 import mascotLogo from '~/assets/images/robotmascot.webp';
+import appstoreImg from '~/assets/images/download_appstore.webp';
+import chplayImg from '~/assets/images/download_chplay.webp';
 function Banner() {
   return (
     <div className={styles.banner}>
@@ -18,7 +20,10 @@ function Banner() {
         <p>Feel deeper, live truer</p>
         {/*Download method */}
 
-        <div className={styles['logo-download']}></div>
+        <div className={styles['logo-download']}>
+          <img src={appstoreImg} />
+          <img src={chplayImg} />
+        </div>
       </div>
     </div>
   );
