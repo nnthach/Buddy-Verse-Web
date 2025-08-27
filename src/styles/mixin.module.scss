@@ -1,4 +1,5 @@
-@use '~/styles/variable.module.scss';
+@use '~/styles/variable.module.scss' as *;
+@use 'sass:map';
 
 $breakpoints: (
   phone: 576px,
@@ -8,7 +9,7 @@ $breakpoints: (
 );
 
 @mixin respond-to($breakpoint) {
-  @media (max-width: map-get($breakpoints, $breakpoint)) {
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
     @content;
   }
 }

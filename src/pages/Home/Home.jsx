@@ -1,7 +1,26 @@
+import Header from '~/components/Header/Header';
 import styles from './Home.module.scss';
 
+import Banner from '~/pages/Home/components/Banner/Banner';
+import OurGoal from '~/pages/Home/components/OurGoal/OurGoal';
+import AboutUs from '~/pages/Home/components/AboutUs/AboutUs';
+// import appstore from '~/assets/images/appstore.webp';
+
 function Home() {
-  return <div className={styles.wrap}>Home</div>;
+  return (
+    <>
+      <Header />
+      <div className={styles.wrap}>
+        {/*Banner */}
+        <Banner />
+
+        <AboutUs />
+
+        {/*Our goals */}
+        <OurGoal />
+      </div>
+    </>
+  );
 }
 
 export default Home;

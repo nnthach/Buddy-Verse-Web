@@ -1,0 +1,101 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.wrap {
+  width: 100%;
+  background-color: $beige-primary-color;
+  padding: 60px 40px;
+  @include flexBoxStyle(center, center, 0);
+
+  @include respond-to(phone) {
+    padding: 20px;
+  }
+
+  .container {
+    width: 1200px;
+
+    @include respond-to(phone) {
+      width: 100%;
+    }
+
+    h5 {
+      text-align: center;
+      color: $purple-primary-color;
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 20px;
+
+      @include respond-to(phone) {
+        font-size: 20px;
+        font-weight: 550;
+        margin-bottom: 10px;
+      }
+    }
+
+    .big-text {
+      text-align: center;
+      font-size: 14px;
+      color: $purple-primary-color;
+      opacity: 0.7;
+      line-height: 1.5;
+
+      @include respond-to(phone) {
+        font-size: 12px;
+      }
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+
+      @include respond-to(phone) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content-box {
+        @include flexBoxStyle(center, center, 15px);
+        background-color: white;
+        padding: 25px 20px;
+        flex-direction: column;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        @include respond-to(phone) {
+          gap: 15px;
+          padding: 15px 10px;
+        }
+
+        img {
+          width: 80px;
+          height: auto;
+          transition: transform 0.3s ease;
+        }
+
+        .content-box-text {
+          text-align: center;
+          font-size: 15px;
+          font-weight: 500;
+          color: $purple-primary-color;
+          line-height: 1.5;
+          text-align: center;
+
+          @include respond-to(phone) {
+            font-size: 12px;
+          }
+        }
+
+        &:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}

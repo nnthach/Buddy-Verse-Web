@@ -1,6 +1,68 @@
-@import '~/styles/mixin.module.scss';
-@import '~/styles/variable.module.scss';
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
 
 .wrap {
-  background-color: red;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 60px;
+  z-index: 100;
+
+  @include respond-to(phone) {
+    padding: 20px 30px;
+  }
+
+  .container {
+    @include flexBoxStyle(center, space-between, 0);
+
+    color: white;
+
+    .logo {
+    }
+
+    .navbar {
+      ul {
+        @include flexBoxStyle(center, center, 40px);
+        list-style: none;
+        color: $beige-primary-color;
+        font-size: larger;
+
+        li {
+          cursor: pointer;
+        }
+
+        @include respond-to(phone) {
+          display: none;
+        }
+      }
+      .bar-icon {
+        display: none;
+
+        @include respond-to(phone) {
+          display: block;
+        }
+      }
+    }
+
+    .auth {
+      @include flexBoxStyle(center, center, 15px);
+      font-size: larger;
+
+      @include respond-to(phone) {
+        display: none;
+      }
+
+      a {
+        color: $beige-primary-color;
+        text-decoration: none;
+      }
+      .get-start {
+        background-color: rgba(212, 212, 212, 0.3);
+        padding: 6px 10px;
+        border-radius: 10px;
+      }
+    }
+  }
 }

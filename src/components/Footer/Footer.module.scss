@@ -1,5 +1,5 @@
-@import '~/styles/mixin.module.scss';
-@import '~/styles/variable.module.scss';
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
 
 .wrap {
   background-color: red;

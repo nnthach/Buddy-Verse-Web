@@ -1,0 +1,32 @@
+@import '~/styles/mixin.module.scss';
+@import '~/styles/variable.module.scss';
+
+.slick-slider:hover .slick-arrow {
+  background-color: rgb(243, 243, 243);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 2px;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 5;
+  color: black;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.slick-slider:hover .slick-next {
+  right: 5px;
+}
+.slick-slider:hover .slick-prev {
+  left: 5px;
+}
+
+.slick-prev {
+  left: 0px;
+}
+
+.slick-next {
+  right: 0px;
+}
+

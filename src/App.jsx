@@ -1,9 +1,14 @@
+import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import SideBar from '~/components/SideBar/SideBar';
+import { SideBarContext } from '~/context/SidebarContext';
 import { publicRouters } from '~/routes/routes';
 
 function App() {
+  const { isOpen } = useContext(SideBarContext);
   return (
     <>
+      {isOpen && <SideBar />}
       <Routes>
         {publicRouters.map((route, index) => {
           return <Route key={index} path={route.path} element={route.component} />;
