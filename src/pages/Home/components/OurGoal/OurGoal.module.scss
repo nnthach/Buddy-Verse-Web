@@ -30,12 +30,22 @@
       color: $purple-primary-color;
       font-size: 30px;
       font-weight: 600;
-      margin-bottom: 20px;
 
       @include respond-to(phone) {
         font-size: 20px;
         font-weight: 550;
-        margin-bottom: 10px;
+      }
+    }
+
+    .tagline {
+      margin-top: 5px;
+      text-align: center;
+      color: $purple-primary-color;
+      font-size: 14px;
+      opacity: 0.6;
+      margin-bottom: 20px;
+      @include respond-to(phone) {
+        font-size: 10px;
       }
     }
 

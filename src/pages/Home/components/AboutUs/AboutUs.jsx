@@ -9,10 +9,22 @@ function AboutUs() {
     <div className={styles.wrap}>
       <div className={styles.container}>
         <h5>About Buddy Verse</h5>
-        <p className={styles['big-text']}>
-          BuddyVerse is a new social platform with a mission to connect people through empathy and meaningful
-          companionship. In today’s digital world, many individuals feel isolated and struggle to build genuine
-          connections.
+        <p className={styles.tagline}>Discover the story and vision behind BuddyVerse.</p>
+        <p className={styles['about-text']}>
+          BuddyVerse is a new social platform designed to bring people closer together through empathy, support, and
+          meaningful companionship. In today’s fast-paced digital world, many individuals experience loneliness and
+          isolation despite being more “connected” than ever. BuddyVerse aims to change that by creating a safe and
+          welcoming space where people can form authentic relationships, share experiences, and find encouragement from
+          others who truly understand.
+          <br />
+          <br />
+          Unlike traditional social networks that focus mainly on entertainment or surface-level interactions,
+          BuddyVerse emphasizes emotional well-being and genuine communication. Our mission is to empower users to build
+          stronger friendships, discover like-minded communities, and feel supported through every stage of life.
+          <br />
+          <br />
+          Whether it’s through one-on-one conversations, group activities, or shared journeys of self-growth, BuddyVerse
+          is more than just a platform—it’s a movement toward kindness, belonging, and human connection.
         </p>
 
         <div className={styles.content}>

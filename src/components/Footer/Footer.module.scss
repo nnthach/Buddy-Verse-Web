@@ -2,5 +2,80 @@
 @use '~/styles/variable.module.scss' as *;
 
 .wrap {
-  background-color: red;
+  background-color: white;
+  padding: 60px;
+  padding-bottom: 40px;
+  @include respond-to(phone) {
+    padding: 30px 20px;
+  }
+  .top {
+    .logo {
+    }
+
+    .download-header {
+      @include flexBoxStyle(center, left, 15px);
+
+      @include respond-to(phone) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+
+      p {
+        font-weight: 600;
+        font-size: 24px;
+      }
+
+      .img-download-wrap {
+        @include flexBoxStyle(center, none, 10px);
+
+        img {
+          width: 120px;
+          height: auto;
+        }
+      }
+    }
+
+    .para {
+      font-size: 14px;
+      margin-top: 20px;
+      text-align: justify;
+      @include respond-to(phone) {
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(204, 204, 204);
+    margin: 40px 0;
+  }
+
+  .bottom {
+    @include flexBoxStyle(flex-start, none, 50px);
+
+    @include respond-to(phone) {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer-col {
+      width: 200px;
+      h5 {
+        font-size: 24px;
+        font-weight: 550;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-top: 10px;
+      }
+
+      .footer-col-icon {
+        @include flexBoxStyle(center, none, 20px);
+      }
+    }
+  }
 }

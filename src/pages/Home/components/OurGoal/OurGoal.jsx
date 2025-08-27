@@ -26,6 +26,7 @@ function OurGoal() {
     <div className={styles['our-goals']}>
       <div className={styles.container}>
         <h5>Our Goals</h5>
+        <p className={styles.tagline}>We aim to make technology a bridge to real human connection.</p>
         <div className={styles.slider}>
           <SliderSimple data={imgData} />
         </div>
