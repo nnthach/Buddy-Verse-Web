@@ -18,6 +18,9 @@ function SideBar() {
         <li onClick={() => scrollTo(aboutRefSidebar)}>About Us</li>
         <li onClick={() => scrollTo(goalsRefSidebar)}>Our Goals</li>
         <li onClick={() => scrollTo(membershipRefSidebar)}>Membership</li>
+        <div className={styles.line} />
+        <li>Sign In</li>
+        <li>Get Start</li>
       </ul>
     </div>
   );
