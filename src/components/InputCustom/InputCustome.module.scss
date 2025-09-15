@@ -1,0 +1,20 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    color: $purple-primary-color;
+    font-weight: 450;
+  }
+
+  input {
+    border: 1px solid $purple-primary-color;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+  }
+}

@@ -47,7 +47,7 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
         </div>
         {/*Auth */}
         <div className={styles.auth}>
-          <Link>Sign In</Link>
+          <Link to="auth/login">Sign In</Link>
           <Link className={styles['get-start']}>Get Start</Link>
         </div>
       </div>

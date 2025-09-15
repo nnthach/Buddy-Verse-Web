@@ -1,0 +1,118 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.wrap {
+  background: url('~/assets/images/bannerhome.webp') no-repeat center/cover;
+  width: 100%;
+  height: 100vh;
+  @include flexBoxStyle(center, center, 0);
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 350px;
+    z-index: 1;
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: $purple-primary-color;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      .forget {
+        text-align: right;
+        font-size: 12px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      button {
+        background-color: $purple-primary-color;
+        color: white;
+        border: none;
+        outline: none;
+        padding: 10px;
+        border-radius: 12px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        &:hover {
+          background-color: $purple-third-color;
+        }
+      }
+    }
+
+    .other {
+      @include flexBoxStyle(center, center, 0);
+      margin-top: 15px;
+
+      .line {
+        height: 1px;
+        width: 100%;
+        background-color: lightgray;
+      }
+
+      span {
+        font-size: 12px;
+        padding: 0 8px;
+        color: gray;
+      }
+    }
+
+    .login-method {
+      margin-top: 15px;
+      @include flexBoxStyle(center, center, 10px);
+      flex-direction: column;
+      .list {
+        @include flexBoxStyle(center, center, 20px);
+      }
+
+      button {
+        width: 49%;
+        font-size: 14px;
+        padding: 6px;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+        @include flexBoxStyle(center, center, 10px);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        &:hover {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+
+    .footer-text {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 12px;
+      color: $purple-primary-color;
+
+      a {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
