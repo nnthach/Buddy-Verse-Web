@@ -1,0 +1,64 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.modal {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  width: 350px;
+  z-index: 1;
+  position: relative;
+
+  .modal-header {
+    @include flexBoxStyle(center, space-around, 0);
+    border-bottom: 1px solid lightgray;
+    padding: 20px;
+
+    p {
+      color: gray;
+      width: 49%;
+      text-align: center;
+      font-weight: 500;
+    }
+    .active {
+      color: $purple-primary-color;
+    }
+
+    .activeAccount {
+      color: $purple-primary-color;
+    }
+  }
+
+  .modal-content {
+    padding: 20px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      button {
+        background-color: $purple-primary-color;
+        color: white;
+        border: none;
+        outline: none;
+        padding: 10px;
+        border-radius: 12px;
+        margin-top: 10px;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+        &:hover {
+          background-color: $purple-third-color;
+        }
+      }
+    }
+
+    p {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styles from './SideBar.module.scss';
 import { SideBarContext } from '~/context/SidebarContext';
+import { Link } from 'react-router-dom';
 
 function SideBar() {
   const { setIsOpen, aboutRefSidebar, goalsRefSidebar, membershipRefSidebar } = useContext(SideBarContext);
@@ -19,8 +20,16 @@ function SideBar() {
         <li onClick={() => scrollTo(goalsRefSidebar)}>Our Goals</li>
         <li onClick={() => scrollTo(membershipRefSidebar)}>Membership</li>
         <div className={styles.line} />
-        <li>Sign In</li>
-        <li>Get Start</li>
+        <li>
+          <Link to={'/auth/login'} onClick={() => setIsOpen(false)}>
+            Sign In
+          </Link>
+        </li>
+        <li>
+          <Link to={'/auth/register'} onClick={() => setIsOpen(false)}>
+            Get Start
+          </Link>
+        </li>
       </ul>
     </div>
   );

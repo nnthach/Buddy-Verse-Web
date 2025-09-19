@@ -11,10 +11,20 @@
     font-weight: 450;
   }
 
-  input {
+  input,
+  select {
     border: 1px solid $purple-primary-color;
     border-radius: 5px;
     padding: 5px;
     outline: none;
   }
+  .error {
+    border-color: red;
+  }
+}
+
+.error-text {
+  font-size: 12px;
+  color: red;
+  margin-top: -8px;
 }
