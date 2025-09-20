@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import SideBar from '~/components/SideBar/SideBar';
 import { SideBarContext } from '~/context/SidebarContext';
 import { publicRouters } from '~/routes/routes';
@@ -8,6 +9,7 @@ function App() {
   const { isOpen } = useContext(SideBarContext);
   return (
     <>
+      <ToastContainer />
       {isOpen && <SideBar />}
       <Routes>
         {publicRouters.map((route, index) => {

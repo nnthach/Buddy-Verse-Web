@@ -1,27 +1,20 @@
 /* eslint-disable no-unused-vars */
-import styles from '../Auth.module.scss';
 import InputCustom from '~/components/InputCustom/InputCustom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { registerAPI } from '~/services/authService';
 import { handleInputChange } from '~/utils/helpers';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '~/context/AuthContext';
 
 function RegisterComponent() {
+  const navigate = useNavigate();
   const selectGenderData = [
     { id: 1, title: 'Male', value: 'male' },
     { id: 2, title: 'Female', value: 'female' },
   ];
-  const [registerStep, setRegisterStep] = useState(1);
-  const initialForm = {
-    password: '',
-    confirmPassword: '',
-    email: '',
-    username: '',
-    firstname: '',
-    lastname: '',
-    dob: '',
-    gender: '',
-  };
-  const [submitRegisterForm, setSubmitRegisterForm] = useState(initialForm);
+  const [registerFormStep, setRegisterFormStep] = useState(1);
+  const { initialRegisterForm, submitRegisterForm, setSubmitRegisterForm } = useContext(AuthContext);
 
   const [formError, setFormError] = useState(null);
 
@@ -102,9 +95,9 @@ function RegisterComponent() {
     e.preventDefault();
     console.log('alo alo');
 
-    if (registerStep == 1) {
+    if (registerFormStep == 1) {
       if (validateStep1()) return;
-      setRegisterStep(2);
+      setRegisterFormStep(2);
       return;
     }
 
@@ -118,15 +111,18 @@ function RegisterComponent() {
 
       console.log('res register', res);
 
-      setSubmitRegisterForm(initialForm);
+      setSubmitRegisterForm(initialRegisterForm);
+      toast.success('Register Successfully');
+
+      navigate('/auth/login');
     } catch (error) {
-      console.log('register err', error);
+      toast.error(error?.response?.data?.message);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {registerStep == 1 ? (
+      {registerFormStep == 1 ? (
         <>
           <InputCustom
             label={'First Name'}
@@ -202,7 +198,7 @@ function RegisterComponent() {
         </>
       )}
 
-      <button type="submit">{registerStep == 1 ? 'Continue' : 'Submit'} </button>
+      <button type="submit">{registerFormStep == 1 ? 'Continue' : 'Submit'} </button>
     </form>
   );
 }

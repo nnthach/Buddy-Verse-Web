@@ -1,5 +1,6 @@
 import Admin from '~/pages/Admin/Admin';
 import Auth from '~/pages/Auth/Auth';
+import GetStart from '~/pages/GetStart/GetStart';
 import Home from '~/pages/Home/Home';
 
 export const publicRouters = [
@@ -14,6 +15,10 @@ export const publicRouters = [
   {
     path: '/admin',
     component: <Admin />,
+  },
+  {
+    path: '/get-start',
+    component: <GetStart />,
   },
 ];
 

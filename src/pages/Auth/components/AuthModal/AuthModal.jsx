@@ -3,15 +3,16 @@ import styles from './AuthModal.module.scss';
 import { useContext, useState } from 'react';
 import { AuthContext } from '~/context/AuthContext';
 import { handleInputChange } from '~/utils/helpers';
+import { forgotPasswordAPI, resetPasswordAPI, verifyOTPAPI } from '~/services/authService';
+import { toast } from 'react-toastify';
 
 function AuthModal() {
-  const { modalType, setModalType } = useContext(AuthContext);
+  const { modalType, setModalType, userId } = useContext(AuthContext);
 
   const [forgotPasswordForm, setForgotPasswordForm] = useState({
     email: '',
     otpCode: '',
     password: '',
-    confirmPassword: '',
   });
 
   const [activeAccountForm, setActiveAccountForm] = useState({ activeOtp: '' });
@@ -20,8 +21,12 @@ function AuthModal() {
 
   const handleChange = handleInputChange(setForgotPasswordForm);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (modalType == 'active-account') {
+      console.log('active account form', activeAccountForm);
+    }
 
     // forgot step 1
     if (stepForgetPassword == 1 && modalType == 'forgot-password') {
@@ -31,21 +36,53 @@ function AuthModal() {
         email: forgotPasswordForm.email,
       };
 
-      console.log('form data email', formData);
-      setStepForgetPassword(2);
+      try {
+        console.log('form data email 1', formData);
+        const res = await forgotPasswordAPI(formData);
+
+        console.log('fgpw email 1 res', res);
+
+        setStepForgetPassword(2);
+      } catch (error) {
+        console.log('email fgpw 1 err', error);
+        setStepForgetPassword(2);
+      }
 
       // forgot step 2
     } else if (stepForgetPassword == 2 && modalType == 'forgot-password') {
+      if (!forgotPasswordForm.otpCode) return;
+
       const formData = {
+        accountId: userId,
         otpCode: forgotPasswordForm?.otpCode,
-        password: forgotPasswordForm?.password,
+      };
+      try {
+        console.log('form data otp 2', formData);
+        const res = await verifyOTPAPI(formData);
+
+        console.log('fgpw otp 2 res', res);
+        toast.success(res.data.message);
+
+        setStepForgetPassword(3);
+      } catch (error) {
+        console.log('otp fgpw 2 err', error);
+      }
+    } else {
+      const formData = {
+        accountId: userId,
+        newPassword: forgotPasswordForm?.password,
       };
 
-      console.log('form data change pw', formData);
+      try {
+        console.log('form data pw 3', formData);
+        const res = await resetPasswordAPI(formData);
 
-      // active account
-    } else if (modalType == 'active-account') {
-      console.log('active account form', activeAccountForm);
+        console.log('fgpw pw 3 res', res);
+        toast.success(res.data.message);
+        setModalType('');
+      } catch (error) {
+        console.log('pw fgpw 3 err', error);
+      }
     }
   };
 
@@ -55,7 +92,8 @@ function AuthModal() {
         {modalType == 'forgot-password' ? (
           <>
             <p className={stepForgetPassword === 1 && styles.active}>Receive OTP</p>
-            <p className={stepForgetPassword === 2 && styles.active}>Change Password</p>
+            <p className={stepForgetPassword === 2 && styles.active}>Verify OTP</p>
+            <p className={stepForgetPassword === 3 && styles.active}>Reset Password</p>
           </>
         ) : (
           <p className={styles.activeAccount}>Active Account</p>
@@ -80,15 +118,16 @@ function AuthModal() {
               onChange={handleChange}
               value={forgotPasswordForm.email}
             />
+          ) : stepForgetPassword === 2 && modalType == 'forgot-password' ? (
+            <InputCustom
+              label={'OTP Code'}
+              type={'text'}
+              name={'otpCode'}
+              onChange={handleChange}
+              value={forgotPasswordForm.otpCode}
+            />
           ) : (
             <>
-              <InputCustom
-                label={'OTP Code'}
-                type={'text'}
-                name={'otpCode'}
-                onChange={handleChange}
-                value={forgotPasswordForm.otpCode}
-              />
               <InputCustom
                 label={'Password'}
                 type={'password'}
@@ -96,13 +135,13 @@ function AuthModal() {
                 onChange={handleChange}
                 value={forgotPasswordForm.password}
               />
-              <InputCustom
+              {/* <InputCustom
                 label={'Confirm Password'}
                 type={'password'}
                 name={'confirmPassword'}
                 onChange={handleChange}
                 value={forgotPasswordForm.confirmPassword}
-              />
+              /> */}
             </>
           )}
 

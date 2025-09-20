@@ -3,7 +3,7 @@ import { refreshTokenAPI } from '~/services/authService';
 
 const api = axios.create({
   baseURL: 'https://localhost:7058/api',
-  timeout: 1000,
+  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -43,11 +43,13 @@ api.interceptors.response.use(
     if (error?.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const refreshToken = localStorage.getItem('refreshToken');
+      const accessToken = localStorage.getItem('accessToken');
 
       if (!refreshToken) return Promise.reject(error);
 
       try {
-        const res = await refreshTokenAPI({ refreshToken });
+        const res = await refreshTokenAPI({ accessToken, refreshToken });
+        console.log('refresh token res', res);
 
         const newAccessToken = res.data.accessToken;
 

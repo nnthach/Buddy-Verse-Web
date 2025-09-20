@@ -1,20 +1,25 @@
 /* eslint-disable no-unused-vars */
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './Auth.module.scss';
-import InputCustom from '~/components/InputCustom/InputCustom';
 import { FaGoogle, FaFacebook, FaTwitter } from 'react-icons/fa';
-import { useContext, useState } from 'react';
-import AuthModal from '~/pages/Auth/AuthModal/AuthModal';
+import { useContext, useEffect, useState } from 'react';
+import AuthModal from '~/pages/Auth/components/AuthModal/AuthModal';
 import { AuthContext } from '~/context/AuthContext';
-import { loginAPI, registerAPI } from '~/services/authService';
-import RegisterComponent from '~/pages/Auth/RegisterComponent/RegisterComponent';
-import LoginComponent from '~/pages/Auth/LoginComponent/LoginComponent';
+import RegisterComponent from '~/pages/Auth/components/RegisterComponent/RegisterComponent';
+import LoginComponent from '~/pages/Auth/components/LoginComponent/LoginComponent';
 
 function Auth() {
   const { type } = useParams();
 
-  const { modalType } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const { modalType, submitRegisterForm } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (type == 'register' && submitRegisterForm.interestIds.length === 0) {
+      navigate('/get-start');
+    }
+  }, []);
 
   return (
     <div className={styles.wrap}>
@@ -41,7 +46,7 @@ function Auth() {
           <p className={styles['footer-text']}>
             {type === 'login' ? (
               <>
-                Do not have an account? <Link to={'/auth/register'}>Register</Link>
+                Do not have an account? <Link to={'/get-start'}>Get Start</Link>
               </>
             ) : (
               <>

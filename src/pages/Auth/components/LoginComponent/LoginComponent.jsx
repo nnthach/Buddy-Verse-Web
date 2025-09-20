@@ -1,12 +1,16 @@
 /* eslint-disable no-unused-vars */
-import styles from '../Auth.module.scss';
+import styles from '../../Auth.module.scss';
 import InputCustom from '~/components/InputCustom/InputCustom';
 import { useContext, useState } from 'react';
 import { loginAPI } from '~/services/authService';
 import { AuthContext } from '~/context/AuthContext';
 import { handleInputChange, validationInput } from '~/utils/helpers';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function LoginComponent() {
+  const navigate = useNavigate();
+  const { userId, setUserId } = useContext(AuthContext);
   const { setModalType } = useContext(AuthContext);
   const [submitLoginForm, setSubmitLoginForm] = useState({
     password: '',
@@ -52,12 +56,23 @@ function LoginComponent() {
     }
 
     try {
-      console.log('login data', submitLoginForm);
       const res = await loginAPI(submitLoginForm);
 
-      console.log('res login', res);
+      localStorage.setItem('accessToken', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
+      localStorage.setItem('userId', res.data.accountId);
+
+      setUserId(res.data.accountId);
+
+      setSubmitLoginForm({
+        password: '',
+        email: '',
+      });
+      toast.success('Login Successfully');
+
+      navigate('/');
     } catch (error) {
-      console.log('login err', error);
+      toast.error(error?.response?.data?.message);
     }
   };
 
@@ -90,8 +105,3 @@ function LoginComponent() {
 }
 
 export default LoginComponent;
-
-// const { errors, isError } = validationInput(submitLoginForm);
-// setFormError(errors);
-// console.log('login err', errors);
-// if (isError) return;

@@ -4,10 +4,13 @@ import { FaBars } from 'react-icons/fa';
 import SideBar from '~/components/SideBar/SideBar';
 import { useContext, useEffect, useState } from 'react';
 import { SideBarContext } from '~/context/SidebarContext';
+import { AuthContext } from '~/context/AuthContext';
 
 function Header({ aboutRef, goalsRef, membershipRef }) {
   const { setIsOpen } = useContext(SideBarContext);
   const [isScroll, setIsScroll] = useState(false);
+
+  const { userInfo } = useContext(AuthContext);
 
   const scrollTo = (ref) => {
     console.log('ref', ref);
