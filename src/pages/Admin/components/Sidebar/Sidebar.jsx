@@ -10,23 +10,26 @@ function Sidebar({ content, setContent }) {
       <div className={styles.top}>
         <h3>Buddy Verse</h3>
         <ul>
-          <li className={content == 'overview' && styles.active} onClick={() => setContent('overview')}>
+          <li className={content == 'overview' ? styles.active : undefined} onClick={() => setContent('overview')}>
             <LuLayoutDashboard size={20} /> Overview
           </li>
-          <li className={content == 'users' && styles.active} onClick={() => setContent('users')}>
+          <li className={content == 'users' ? styles.active : undefined} onClick={() => setContent('users')}>
             <LuUsers size={20} />
             Users
           </li>
-          <li className={content == 'transactions' && styles.active} onClick={() => setContent('transactions')}>
+          <li
+            className={content == 'transactions' ? styles.active : undefined}
+            onClick={() => setContent('transactions')}
+          >
             <MdOutlineAttachMoney size={20} /> Transactions
           </li>
-          <li className={content == 'feedbacks' && styles.active} onClick={() => setContent('feedbacks')}>
+          <li className={content == 'feedbacks' ? styles.active : undefined} onClick={() => setContent('feedbacks')}>
             <IoChatboxOutline size={20} /> Feedbacks
           </li>
-          <li className={content == 'reports' && styles.active} onClick={() => setContent('reports')}>
+          <li className={content == 'reports' ? styles.active : undefined} onClick={() => setContent('reports')}>
             <MdOutlineErrorOutline size={22} /> Reports
           </li>
-          <li className={content == 'setting' && styles.active} onClick={() => setContent('setting')}>
+          <li className={content == 'setting' ? styles.active : undefined} onClick={() => setContent('setting')}>
             <LuSettings size={22} /> Setting
           </li>
         </ul>

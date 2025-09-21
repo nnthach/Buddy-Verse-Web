@@ -7,6 +7,9 @@ import AuthModal from '~/pages/Auth/components/AuthModal/AuthModal';
 import { AuthContext } from '~/context/AuthContext';
 import RegisterComponent from '~/pages/Auth/components/RegisterComponent/RegisterComponent';
 import LoginComponent from '~/pages/Auth/components/LoginComponent/LoginComponent';
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { loginGoogleAPI } from '~/services/authService';
+import { toast } from 'react-toastify';
 
 function Auth() {
   const { type } = useParams();
@@ -20,6 +23,31 @@ function Auth() {
       navigate('/get-start');
     }
   }, []);
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    console.log('test btn login gg', credentialResponse);
+
+    try {
+      const res = await loginGoogleAPI({
+        idToken: credentialResponse.credential,
+      });
+      console.log('call login gg api res', res);
+
+      localStorage.setItem('accessToken', res.data.accessToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
+      localStorage.setItem('userId', res.data.accountId);
+
+      toast.success('Login Successfully');
+
+      navigate('/');
+    } catch (error) {
+      console.log('login gg api err', error);
+    }
+  };
+
+  const handleGoogleError = (error) => {
+    console.log('Login Google Failed', error);
+  };
 
   return (
     <div className={styles.wrap}>
@@ -38,9 +66,16 @@ function Auth() {
           </div>
           <div className={styles['login-method']}>
             <div className={styles.list}>
-              <FaGoogle color="red" size={24} />
-              <FaFacebook color="blue" size={24} />
-              <FaTwitter color="#1DA1F2" size={24} />
+              <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleError} useOneTap />
+              {/* <div onClick={() => loginGoogle()} className={styles['login-method-icon']}>
+                <FaGoogle color="red" size={24} />
+              </div>
+              <div>
+                <FaFacebook color="blue" size={26} className={styles['login-method-icon']} />
+              </div>
+              <div>
+                <FaTwitter color="#1DA1F2" size={24} className={styles['login-method-icon']} />
+              </div> */}
             </div>
           </div>
           <p className={styles['footer-text']}>

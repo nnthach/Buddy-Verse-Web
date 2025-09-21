@@ -23,6 +23,7 @@ $breakpoints: (
   color: $color;
   border-radius: $radius;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 @mixin flexBoxStyle($align, $justify, $gap) {

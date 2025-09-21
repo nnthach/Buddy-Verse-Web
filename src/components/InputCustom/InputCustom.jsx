@@ -1,6 +1,6 @@
 import styles from './InputCustome.module.scss';
 
-function InputCustom({ error, label, type, name, onChange, value, selectDefault = '', selectData = null }) {
+function InputCustom({ error, label, type, name, onChange, value, selectDefault = '', selectData = null, ...props }) {
   const renderInput = () => {
     switch (type) {
       case 'select':
@@ -25,7 +25,13 @@ function InputCustom({ error, label, type, name, onChange, value, selectDefault 
           <>
             <div className={styles.wrap}>
               <label>{label}</label>
-              <input type={'date'} name={name} onChange={onChange} value={value} className={error && styles.error} />
+              <input
+                type={'date'}
+                name={name}
+                onChange={onChange}
+                value={value ?? ''}
+                className={error && styles.error}
+              />
             </div>
             {error && <p className={styles['error-text']}>{error}</p>}
           </>
@@ -35,7 +41,14 @@ function InputCustom({ error, label, type, name, onChange, value, selectDefault 
           <>
             <div className={styles.wrap}>
               <label>{label}</label>
-              <input type={type} name={name} onChange={onChange} value={value} className={error && styles.error} />
+              <input
+                type={type}
+                name={name}
+                onChange={onChange}
+                value={value ?? ''}
+                className={error && styles.error}
+                {...props}
+              />
             </div>
             {error && <p className={styles['error-text']}>{error}</p>}
           </>
