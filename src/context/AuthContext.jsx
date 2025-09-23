@@ -1,16 +1,18 @@
 import { createContext, useState } from 'react';
 
-// eslint-disable-next-line react-refresh/only-export-components
+// Vô hiệu hóa quy tắc eslint cho việc chỉ xuất component
 export const AuthContext = createContext({
   isOpen: false,
 });
 
+// Nhà cung cấp ngữ cảnh xác thực
 export const AuthProvider = ({ children }) => {
   const [userId, setUserId] = useState(localStorage.getItem('userId'));
   const [userInfo, setUserInfo] = useState(null);
 
   const [modalType, setModalType] = useState('');
 
+  // Biểu mẫu đăng ký ban đầu
   const initialRegisterForm = {
     password: '',
     confirmPassword: '',

@@ -16,18 +16,18 @@ function SideBar() {
         &times;
       </p>
       <ul>
-        <li onClick={() => scrollTo(aboutRefSidebar)}>About Us</li>
-        <li onClick={() => scrollTo(goalsRefSidebar)}>Our Goals</li>
-        <li onClick={() => scrollTo(membershipRefSidebar)}>Membership</li>
+        <li onClick={() => scrollTo(aboutRefSidebar)}>Về Chúng Tôi</li>
+        <li onClick={() => scrollTo(goalsRefSidebar)}>Mục Tiêu Của Chúng Tôi</li>
+        <li onClick={() => scrollTo(membershipRefSidebar)}>Thành Viên</li>
         <div className={styles.line} />
         <li>
           <Link to={'/auth/login'} onClick={() => setIsOpen(false)}>
-            Sign In
+            Đăng Nhập
           </Link>
         </li>
         <li>
           <Link to={'/auth/register'} onClick={() => setIsOpen(false)}>
-            Get Start
+            Bắt Đầu
           </Link>
         </li>
       </ul>

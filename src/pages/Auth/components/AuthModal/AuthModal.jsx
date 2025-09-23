@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import InputCustom from '~/components/InputCustom/InputCustom';
 import styles from './AuthModal.module.scss';
 import { useContext, useState } from 'react';
@@ -91,12 +92,12 @@ function AuthModal() {
       <div className={styles['modal-header']}>
         {modalType == 'forgot-password' ? (
           <>
-            <p className={stepForgetPassword === 1 && styles.active}>Receive OTP</p>
-            <p className={stepForgetPassword === 2 && styles.active}>Verify OTP</p>
-            <p className={stepForgetPassword === 3 && styles.active}>Reset Password</p>
+            <p className={stepForgetPassword === 1 && styles.active}>Nhận OTP</p>
+            <p className={stepForgetPassword === 2 && styles.active}>Xác minh OTP</p>
+            <p className={stepForgetPassword === 3 && styles.active}>Đặt lại mật khẩu</p>
           </>
         ) : (
-          <p className={styles.activeAccount}>Active Account</p>
+          <p className={styles.activeAccount}>Kích hoạt tài khoản</p>
         )}
       </div>
 
@@ -104,7 +105,7 @@ function AuthModal() {
         <form onSubmit={handleSubmit}>
           {modalType == 'active-account' ? (
             <InputCustom
-              label={'OTP Code'}
+              label={'Mã OTP'}
               type={'text'}
               name={'activeOtp'}
               onChange={handleInputChange(setActiveAccountForm)}
@@ -120,7 +121,7 @@ function AuthModal() {
             />
           ) : stepForgetPassword === 2 && modalType == 'forgot-password' ? (
             <InputCustom
-              label={'OTP Code'}
+              label={'Mã OTP'}
               type={'text'}
               name={'otpCode'}
               onChange={handleChange}
@@ -129,14 +130,14 @@ function AuthModal() {
           ) : (
             <>
               <InputCustom
-                label={'Password'}
+                label={'Mật khẩu'}
                 type={'password'}
                 name={'password'}
                 onChange={handleChange}
                 value={forgotPasswordForm.password}
               />
               {/* <InputCustom
-                label={'Confirm Password'}
+                label={'Xác nhận mật khẩu'}
                 type={'password'}
                 name={'confirmPassword'}
                 onChange={handleChange}
@@ -145,13 +146,13 @@ function AuthModal() {
             </>
           )}
 
-          <button type="submit">Submit</button>
+          <button type="submit">Gửi</button>
         </form>
 
         {stepForgetPassword === 1 ? (
-          <p onClick={() => setModalType('')}>Cancel</p>
+          <p onClick={() => setModalType('')}>Hủy</p>
         ) : (
-          <p onClick={() => setStepForgetPassword(1)}>Change Email</p>
+          <p onClick={() => setStepForgetPassword(1)}>Thay đổi Email</p>
         )}
       </div>
     </div>

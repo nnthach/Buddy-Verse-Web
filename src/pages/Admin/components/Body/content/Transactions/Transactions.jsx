@@ -1,5 +1,5 @@
 function Transactions() {
-  return <div>Transactions</div>;
+  return <div>Giao dịch</div>;
 }
 
 export default Transactions;

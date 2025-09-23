@@ -10,8 +10,8 @@ import { AuthContext } from '~/context/AuthContext';
 function RegisterComponent() {
   const navigate = useNavigate();
   const selectGenderData = [
-    { id: 1, title: 'Male', value: 'male' },
-    { id: 2, title: 'Female', value: 'female' },
+    { id: 1, title: 'Nam', value: 'male' },
+    { id: 2, title: 'Nữ', value: 'female' },
   ];
   const [registerFormStep, setRegisterFormStep] = useState(1);
   const { initialRegisterForm, submitRegisterForm, setSubmitRegisterForm } = useContext(AuthContext);
@@ -25,22 +25,22 @@ function RegisterComponent() {
     let isError = false;
 
     if (!submitRegisterForm.firstname.trim()) {
-      errors.firstname = 'Firstname is required';
+      errors.firstname = 'Tên là bắt buộc';
       isError = true;
     }
 
     if (!submitRegisterForm.lastname.trim()) {
-      errors.lastname = 'Lastname is required';
+      errors.lastname = 'Họ là bắt buộc';
       isError = true;
     }
 
     if (!submitRegisterForm.dob.trim()) {
-      errors.dob = 'Date of birth is required';
+      errors.dob = 'Ngày sinh là bắt buộc';
       isError = true;
     }
 
     if (!submitRegisterForm.gender.trim()) {
-      errors.gender = 'Gender is required';
+      errors.gender = 'Giới tính là bắt buộc';
       isError = true;
     }
 
@@ -53,37 +53,37 @@ function RegisterComponent() {
     let isError = false;
 
     if (!submitRegisterForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = 'Email là bắt buộc';
       isError = true;
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(submitRegisterForm.email)) {
-        errors.email = 'Invalid email format';
+        errors.email = 'Định dạng email không hợp lệ';
         isError = true;
       }
     }
 
     if (!submitRegisterForm.username.trim()) {
-      errors.username = 'Username is required';
+      errors.username = 'Tên người dùng là bắt buộc';
       isError = true;
     } else if (submitRegisterForm.username.length < 6) {
-      errors.username = 'Username must be at least 6 characters';
+      errors.username = 'Tên người dùng phải có ít nhất 6 ký tự';
       isError = true;
     }
 
     if (!submitRegisterForm.password.trim()) {
-      errors.password = 'Password is required';
+      errors.password = 'Mật khẩu là bắt buộc';
       isError = true;
     } else if (submitRegisterForm.password.length < 6) {
-      errors.password = 'Password must be at least 6 characters';
+      errors.password = 'Mật khẩu phải có ít nhất 6 ký tự';
       isError = true;
     }
 
     if (!submitRegisterForm.confirmPassword.trim()) {
-      errors.confirmPassword = 'Confirm Password is required';
+      errors.confirmPassword = 'Xác nhận mật khẩu là bắt buộc';
       isError = true;
     } else if (submitRegisterForm.confirmPassword !== submitRegisterForm.password) {
-      errors.confirmPassword = 'Passwords do not match';
+      errors.confirmPassword = 'Mật khẩu không khớp';
       isError = true;
     }
 
@@ -112,7 +112,7 @@ function RegisterComponent() {
       console.log('res register', res);
 
       setSubmitRegisterForm(initialRegisterForm);
-      toast.success('Register Successfully');
+      toast.success('Đăng ký thành công');
 
       navigate('/auth/login');
     } catch (error) {
@@ -125,7 +125,7 @@ function RegisterComponent() {
       {registerFormStep == 1 ? (
         <>
           <InputCustom
-            label={'First Name'}
+            label={'Tên'}
             type={'text'}
             name={'firstname'}
             onChange={handleChange}
@@ -133,7 +133,7 @@ function RegisterComponent() {
             error={formError?.firstname}
           />
           <InputCustom
-            label={'Last Name'}
+            label={'Họ'}
             type={'text'}
             name={'lastname'}
             onChange={handleChange}
@@ -141,7 +141,7 @@ function RegisterComponent() {
             error={formError?.lastname}
           />
           <InputCustom
-            label={'Date of Birth'}
+            label={'Ngày sinh'}
             type={'date'}
             name={'dob'}
             onChange={handleChange}
@@ -149,20 +149,20 @@ function RegisterComponent() {
             error={formError?.dob}
           />
           <InputCustom
-            label={'Gender'}
+            label={'Giới tính'}
             type={'select'}
             name={'gender'}
             onChange={handleChange}
             value={submitRegisterForm.gender}
             selectData={selectGenderData}
-            selectDefault="Select Gender"
+            selectDefault="Chọn giới tính"
             error={formError?.gender}
           />
         </>
       ) : (
         <>
           <InputCustom
-            label={'Username'}
+            label={'Tên người dùng'}
             type={'text'}
             name={'username'}
             onChange={handleChange}
@@ -179,7 +179,7 @@ function RegisterComponent() {
             error={formError?.email}
           />
           <InputCustom
-            label={'Password'}
+            label={'Mật khẩu'}
             type={'password'}
             name={'password'}
             onChange={handleChange}
@@ -188,7 +188,7 @@ function RegisterComponent() {
           />
 
           <InputCustom
-            label={'Confirm Password'}
+            label={'Xác nhận mật khẩu'}
             type={'password'}
             name={'confirmPassword'}
             onChange={handleChange}
@@ -198,7 +198,7 @@ function RegisterComponent() {
         </>
       )}
 
-      <button type="submit">{registerFormStep == 1 ? 'Continue' : 'Submit'} </button>
+      <button type="submit">{registerFormStep == 1 ? 'Tiếp tục' : 'Gửi'}</button>
     </form>
   );
 }

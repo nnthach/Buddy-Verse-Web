@@ -9,47 +9,46 @@ const AboutUs = forwardRef((props, ref) => {
   return (
     <div ref={ref} className={styles.wrap}>
       <div className={styles.container}>
-        <h5>About Buddy Verse</h5>
-        <p className={styles.tagline}>Discover the story and vision behind BuddyVerse.</p>
+        <h5>Về Buddy Verse</h5>
+        <p className={styles.tagline}>Khám phá câu chuyện và tầm nhìn đằng sau BuddyVerse.</p>
         <p className={styles['about-text']}>
-          BuddyVerse is a new social platform designed to bring people closer together through empathy, support, and
-          meaningful companionship. In today’s fast-paced digital world, many individuals experience loneliness and
-          isolation despite being more “connected” than ever. BuddyVerse aims to change that by creating a safe and
-          welcoming space where people can form authentic relationships, share experiences, and find encouragement from
-          others who truly understand.
+          BuddyVerse là một nền tảng xã hội mới được thiết kế để gắn kết mọi người thông qua sự đồng cảm, hỗ trợ và tình
+          bạn ý nghĩa. Trong thế giới kỹ thuật số nhịp độ nhanh ngày nay, nhiều người cảm thấy cô đơn và bị cô lập dù
+          được "kết nối" hơn bao giờ hết. BuddyVerse nhằm thay đổi điều đó bằng cách tạo ra một không gian an toàn và
+          chào đón, nơi mọi người có thể hình thành các mối quan hệ chân thực, chia sẻ trải nghiệm và tìm được sự khích
+          lệ từ những người thực sự hiểu họ.
           <br />
           <br />
-          Unlike traditional social networks that focus mainly on entertainment or surface-level interactions,
-          BuddyVerse emphasizes emotional well-being and genuine communication. Our mission is to empower users to build
-          stronger friendships, discover like-minded communities, and feel supported through every stage of life.
+          Không giống như các mạng xã hội truyền thống chủ yếu tập trung vào giải trí hoặc tương tác bề mặt, BuddyVerse
+          nhấn mạnh vào sức khỏe tinh thần và giao tiếp chân thành. Sứ mệnh của chúng tôi là trao quyền cho người dùng
+          để xây dựng tình bạn bền vững hơn, khám phá các cộng đồng cùng sở thích và cảm thấy được hỗ trợ qua mọi giai
+          đoạn của cuộc đời.
           <br />
           <br />
-          Whether it’s through one-on-one conversations, group activities, or shared journeys of self-growth, BuddyVerse
-          is more than just a platform—it’s a movement toward kindness, belonging, and human connection.
+          Dù là qua các cuộc trò chuyện một đối một, hoạt động nhóm hay hành trình phát triển bản thân, BuddyVerse không
+          chỉ là một nền tảng—đó là một phong trào hướng tới lòng tốt, sự thuộc về và kết nối con người.
         </p>
 
         <div className={styles.content}>
           <div className={styles['content-box']}>
             <img src={connectImg} />
             <p className={styles['content-box-text']}>
-              Find compatible friends based on interests, personality, and connection needs.
+              Tìm bạn bè phù hợp dựa trên sở thích, tính cách và nhu cầu kết nối.
             </p>
           </div>
           <div className={styles['content-box']}>
             <img src={chatImg} />
-            <p className={styles['content-box-text']}>Chat and share stories freely and comfortably.</p>
+            <p className={styles['content-box-text']}>Trò chuyện và chia sẻ câu chuyện một cách tự do và thoải mái.</p>
           </div>
           <div className={styles['content-box']}>
             <img src={leafImg} />
             <p className={styles['content-box-text']}>
-              Build lasting bonds through interactive activities and mutual support.
+              Xây dựng mối quan hệ bền vững thông qua các hoạt động tương tác và hỗ trợ lẫn nhau.
             </p>
           </div>
           <div className={styles['content-box']}>
             <img src={safeImg} />
-            <p className={styles['content-box-text']}>
-              Stay safe and secure with smart moderation and reporting systems.
-            </p>
+            <p className={styles['content-box-text']}>Giữ an toàn với hệ thống kiểm duyệt và báo cáo thông minh.</p>
           </div>
         </div>
       </div>

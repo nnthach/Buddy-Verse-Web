@@ -21,7 +21,7 @@ function Interest() {
   }, []);
 
   const handleDeleteInterest = async (id) => {
-    const isConfirm = window.confirm('Bạn có chắc chắn muốn xoá interest này?');
+    const isConfirm = window.confirm('Bạn có chắc chắn muốn xóa sở thích này?');
     if (!isConfirm) return;
 
     try {
@@ -43,8 +43,8 @@ function Interest() {
       <div className={styles.wrap}>
         <div className={styles['interest-wrap']}>
           <div className={styles.heading}>
-            <h3>Interests List</h3>
-            <button onClick={() => setOpenModal('create')}>Add New</button>
+            <h3>Danh sách sở thích</h3>
+            <button onClick={() => setOpenModal('create')}>Thêm mới</button>
           </div>
 
           <div className={styles['table-wrap']}>
@@ -52,10 +52,10 @@ function Interest() {
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Created At</th>
-                  <th>Action</th>
+                  <th>Tên</th>
+                  <th>Mô tả</th>
+                  <th>Ngày tạo</th>
+                  <th>Hành động</th>
                 </tr>
               </thead>
               <tbody>

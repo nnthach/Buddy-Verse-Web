@@ -31,7 +31,7 @@ function Body({ content }) {
       <div className={styles.header}>
         <p className={styles['header-text-right']}>
           <IoCopyOutline color="black" />
-          Dasboard / <span>{content.charAt(0).toUpperCase() + content.slice(1)}</span>
+          Bảng điều khiển / <span>{content.charAt(0).toUpperCase() + content.slice(1)}</span>
         </p>
       </div>
       <div className={styles.content}>{contentRender()}</div>

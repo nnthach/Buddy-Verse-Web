@@ -15,10 +15,10 @@ function GetStart() {
     const handleGetInterestList = async () => {
       try {
         const res = await getInterestListAPI();
-        console.log('res interest list', res);
+        console.log('danh sách sở thích', res);
         setInterestList(res.data);
       } catch (error) {
-        console.log('get interest list err', error);
+        console.log('lỗi lấy danh sách sở thích', error);
       }
     };
 
@@ -26,7 +26,7 @@ function GetStart() {
   }, []);
 
   const handleAddInterestList = (item) => {
-    console.log('item', item);
+    console.log('mục', item);
 
     setSubmitRegisterForm((prev) => {
       const isSelected = prev.interestIds.includes(item);
@@ -40,7 +40,7 @@ function GetStart() {
 
   const handleSubmit = () => {
     if (submitRegisterForm.interestIds.length == 0) {
-      toast.warn('You must choose at least one!');
+      toast.warn('Bạn phải chọn ít nhất một sở thích!');
       return;
     }
     navigate('/auth/register');
@@ -50,10 +50,10 @@ function GetStart() {
     <div className={styles.wrap}>
       <div className={styles.overlay} />
       <div className={styles.content}>
-        <h1>What are you interest in?</h1>
-        <p className={styles['sub-heading']}>for better matches</p>
+        <h1>Bạn quan tâm đến điều gì?</h1>
+        <p className={styles['sub-heading']}>để có kết quả phù hợp hơn</p>
 
-        {/*interest list */}
+        {/*danh sách sở thích */}
         <div className={styles['interest-list']}>
           {interestList.map((item) => (
             <span
@@ -68,9 +68,9 @@ function GetStart() {
           ))}
         </div>
 
-        <button onClick={() => handleSubmit()}>Continue</button>
+        <button onClick={() => handleSubmit()}>Tiếp tục</button>
         <p>
-          <Link to={'/auth/login'}>Back to Sign In</Link>
+          <Link to={'/auth/login'}>Quay lại Đăng nhập</Link>
         </p>
       </div>
     </div>

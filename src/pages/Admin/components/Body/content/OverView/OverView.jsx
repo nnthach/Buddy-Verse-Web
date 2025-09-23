@@ -10,7 +10,7 @@ function Overview() {
       <div className={styles.summary}>
         <div className={styles['summary-box']}>
           <div className={styles.top}>
-            <p>New Users</p>
+            <p>Người dùng mới</p>
             <FaArrowTrendUp />
           </div>
           <div className={styles.bottom}>
@@ -20,7 +20,7 @@ function Overview() {
         </div>
         <div className={styles['summary-box']}>
           <div className={styles.top}>
-            <p>Premium Users</p>
+            <p>Người dùng cao cấp</p>
             <FaArrowTrendUp />
           </div>
           <div className={styles.bottom}>
@@ -30,14 +30,14 @@ function Overview() {
         </div>
       </div>
 
-      {/*Chart */}
+      {/*Biểu đồ*/}
       <div className={styles['chart-wrap']}>
-        <UserGrowthChart heading={'User Grow Chart'} subHeading={'Monthly'} />
-        <RevenueChart heading={'Revenue'} subHeading={'Daily'} />
+        <UserGrowthChart heading={'Biểu đồ tăng trưởng người dùng'} subHeading={'Hàng tháng'} />
+        <RevenueChart heading={'Doanh thu'} subHeading={'Hàng ngày'} />
       </div>
 
       <div className={styles['chart-wrap']}>
-        <UserDistributionChart heading={'User Distribution'} subHeading={'Monthly'} />
+        <UserDistributionChart heading={'Phân bố người dùng'} subHeading={'Hàng tháng'} />
       </div>
     </div>
   );

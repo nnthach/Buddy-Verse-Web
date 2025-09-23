@@ -25,12 +25,14 @@ const OurGoal = forwardRef((props, ref) => {
   return (
     <div ref={ref} className={styles['our-goals']}>
       <div className={styles.container}>
-        <h5>Our Goals</h5>
-        <p className={styles.tagline}>We aim to make technology a bridge to real human connection.</p>
+        <h5>Mục tiêu của chúng tôi</h5>
+        <p className={styles.tagline}>
+          Chúng tôi hướng tới việc biến công nghệ thành cầu nối cho sự kết nối con người thực sự.
+        </p>
         <div className={styles.slider}>
           <SliderSimple data={imgData} />
         </div>
-        {/*Responsive slider */}
+        {/* Thanh trượt responsive */}
         <div className={styles['slider-responsive']}>
           <button className={styles.btn + ' ' + styles.prev} onClick={prevSlide}>
             &#10094;

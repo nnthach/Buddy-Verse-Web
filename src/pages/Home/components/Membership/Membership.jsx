@@ -6,77 +6,77 @@ const Membership = forwardRef((props, ref) => {
   const membershipPlansData = [
     {
       info: {
-        name: 'BASIC',
+        name: 'CƠ BẢN',
         price: '29,999',
-        rule: 'Per member, per month',
-        description: 'For all individuals and starters who want to start with domaining.',
+        rule: 'Mỗi thành viên, mỗi tháng',
+        description: 'Dành cho tất cả cá nhân và người mới bắt đầu muốn thử với lĩnh vực tên miền.',
       },
       benefits: [
-        { label: 'Access to All Features', available: true },
-        { label: '1k lookups / per month', available: true },
-        { label: 'No API Credits', available: false },
-        { label: '10 Monitoring Quota', available: true },
-        { label: '60 minutes Monitoring interval', available: true },
-        { label: '20% discount on backorders', available: true },
-        { label: 'Domain Name Appraisal', available: true, tag: 'Coming Soon' },
+        { label: 'Truy cập tất cả tính năng', available: true },
+        { label: '1k lượt tra cứu / mỗi tháng', available: true },
+        { label: 'Không có tín dụng API', available: false },
+        { label: 'Hạn mức giám sát 10', available: true },
+        { label: 'Khoảng thời gian giám sát 60 phút', available: true },
+        { label: 'Giảm giá 20% cho đơn đặt trước', available: true },
+        { label: 'Định giá tên miền', available: true, tag: 'Sắp ra mắt' },
       ],
     },
     {
       info: {
-        tag: 'Popular',
-        name: 'PREMIUM',
+        tag: 'Phổ biến',
+        name: 'CAO CẤP',
         price: '49,999',
-        rule: 'Per member, per month',
-        description: 'For professional domain names investors with a big portfolio.',
+        rule: 'Mỗi thành viên, mỗi tháng',
+        description: 'Dành cho các nhà đầu tư tên miền chuyên nghiệp với danh mục lớn.',
       },
       benefits: [
-        { label: 'Access to All Features', available: true },
-        { label: '1k lookups / per month', available: true },
-        { label: '30k API Credits / month', available: true },
-        { label: '10 Monitoring Quota', available: true },
-        { label: '60 minutes Monitoring interval', available: true },
-        { label: '20% discount on backorders', available: true },
-        { label: 'Domain Name Appraisal', available: true, tag: 'Coming Soon' },
-        { label: 'IP Monitoring', available: true, tag: 'Coming Soon' },
-        { label: 'Backlink Monitoring', available: true, tag: 'Coming Soon' },
+        { label: 'Truy cập tất cả tính năng', available: true },
+        { label: '1k lượt tra cứu / mỗi tháng', available: true },
+        { label: '30k tín dụng API / tháng', available: true },
+        { label: 'Hạn mức giám sát 10', available: true },
+        { label: 'Khoảng thời gian giám sát 60 phút', available: true },
+        { label: 'Giảm giá 20% cho đơn đặt trước', available: true },
+        { label: 'Định giá tên miền', available: true, tag: 'Sắp ra mắt' },
+        { label: 'Giám sát IP', available: true, tag: 'Sắp ra mắt' },
+        { label: 'Giám sát liên kết ngược', available: true, tag: 'Sắp ra mắt' },
       ],
     },
     {
       info: {
-        name: 'ADVANCED',
+        name: 'NÂNG CAO',
         price: '499,999',
-        rule: 'Per member, per year',
-        description: 'For professional domain names investors with a big portfolio.',
+        rule: 'Mỗi thành viên, mỗi năm',
+        description: 'Dành cho các nhà đầu tư tên miền chuyên nghiệp với danh mục lớn.',
       },
       benefits: [
-        { label: 'Access to All Features', available: true },
-        { label: '1k lookups / per month', available: true },
-        { label: '30k API Credits / month', available: true },
-        { label: '10 Monitoring Quota', available: true },
-        { label: '60 minutes Monitoring interval', available: true },
-        { label: '20% discount on backorders', available: true },
-        { label: 'Domain Name Appraisal', available: true, tag: 'Coming Soon' },
-        { label: 'IP Monitoring', available: true, tag: 'Coming Soon' },
-        { label: 'Backlink Monitoring', available: true, tag: 'Coming Soon' },
+        { label: 'Truy cập tất cả tính năng', available: true },
+        { label: '1k lượt tra cứu / mỗi tháng', available: true },
+        { label: '30k tín dụng API / tháng', available: true },
+        { label: 'Hạn mức giám sát 10', available: true },
+        { label: 'Khoảng thời gian giám sát 60 phút', available: true },
+        { label: 'Giảm giá 20% cho đơn đặt trước', available: true },
+        { label: 'Định giá tên miền', available: true, tag: 'Sắp ra mắt' },
+        { label: 'Giám sát IP', available: true, tag: 'Sắp ra mắt' },
+        { label: 'Giám sát liên kết ngược', available: true, tag: 'Sắp ra mắt' },
       ],
     },
   ];
   return (
     <div ref={ref} className={styles.wrap}>
       <div className={styles.container}>
-        <h5>Membership</h5>
-        <p className={styles.tagline}>Unlock a better experience</p>
+        <h5>Thành viên</h5>
+        <p className={styles.tagline}>Mở khóa trải nghiệm tốt hơn</p>
 
         <div className={styles.content}>
           {membershipPlansData.map((item, index) => (
             <div
               key={index}
-              className={`${styles['membership-card']} ${item.info.name == 'BASIC' ? styles.basic : styles.premium}`}
+              className={`${styles['membership-card']} ${item.info.name == 'CƠ BẢN' ? styles.basic : styles.premium}`}
             >
               <div className={styles['membership-content']}>
                 {/*Header */}
                 <div className={styles['header']}>
-                  {item.info.tag && <p className={styles['tag']}>Popular</p>}
+                  {item.info.tag && <p className={styles['tag']}>Phổ biến</p>}
                   <h2 className={`${styles['name']}`}>{item.info.name}</h2>
                   <p className={styles['description']}>{item.info.description}</p>
                 </div>
@@ -90,7 +90,7 @@ const Membership = forwardRef((props, ref) => {
                   {item.benefits.map((label, index) => (
                     <li key={index} className={`${styles.benefit} ${styles.available}`}>
                       {label.available ? (
-                        <IoIosCheckmarkCircle fontSize={24} color={item.info.name == 'BASIC' ? 'black' : '#F1F3E7'} />
+                        <IoIosCheckmarkCircle fontSize={24} color={item.info.name == 'CƠ BẢN' ? 'black' : '#F1F3E7'} />
                       ) : (
                         <IoIosCloseCircle fontSize={24} color="red" />
                       )}{' '}
@@ -101,8 +101,8 @@ const Membership = forwardRef((props, ref) => {
 
                 {/* Button */}
                 <div className={styles.actions}>
-                  <button className={styles['trial-btn']}>Start free 14-days trial</button>
-                  <p className={styles.note}>No credit card required</p>
+                  <button className={styles['trial-btn']}>Bắt đầu dùng thử miễn phí 14 ngày</button>
+                  <p className={styles.note}>Không yêu cầu thẻ tín dụng</p>
                 </div>
               </div>
             </div>

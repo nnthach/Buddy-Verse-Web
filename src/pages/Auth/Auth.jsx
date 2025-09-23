@@ -37,7 +37,7 @@ function Auth() {
       localStorage.setItem('refreshToken', res.data.refreshToken);
       localStorage.setItem('userId', res.data.accountId);
 
-      toast.success('Login Successfully');
+      toast.success('Đăng nhập thành công');
 
       navigate('/');
     } catch (error) {
@@ -55,13 +55,13 @@ function Auth() {
 
       {modalType == '' ? (
         <div className={styles.content}>
-          <h1>{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
+          <h1>{type === 'login' ? 'Đăng nhập' : 'Đăng ký'}</h1>
 
           {type == 'login' ? <LoginComponent /> : <RegisterComponent />}
 
           <div className={styles.other}>
             <div className={styles.line} />
-            <span>OR</span>
+            <span>HOẶC</span>
             <div className={styles.line} />
           </div>
           <div className={styles['login-method']}>
@@ -81,11 +81,11 @@ function Auth() {
           <p className={styles['footer-text']}>
             {type === 'login' ? (
               <>
-                Do not have an account? <Link to={'/get-start'}>Get Start</Link>
+                Chưa có tài khoản? <Link to={'/get-start'}>Bắt đầu</Link>
               </>
             ) : (
               <>
-                Already have an account? <Link to={'/auth/login'}>Login</Link>
+                Đã có tài khoản? <Link to={'/auth/login'}>Đăng nhập</Link>
               </>
             )}
           </p>

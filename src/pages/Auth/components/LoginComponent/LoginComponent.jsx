@@ -25,21 +25,21 @@ function LoginComponent() {
     let isError = false;
 
     if (!submitLoginForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = 'Email là bắt buộc';
       isError = true;
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(submitLoginForm.email)) {
-        errors.email = 'Invalid email format';
+        errors.email = 'Định dạng email không hợp lệ';
         isError = true;
       }
     }
 
     if (!submitLoginForm.password.trim()) {
-      errors.password = 'Password is required';
+      errors.password = 'Mật khẩu là bắt buộc';
       isError = true;
     } else if (submitLoginForm.password.length < 6) {
-      errors.password = 'Password must be at least 6 characters';
+      errors.password = 'Mật khẩu phải có ít nhất 6 ký tự';
       isError = true;
     }
 
@@ -68,7 +68,7 @@ function LoginComponent() {
         password: '',
         email: '',
       });
-      toast.success('Login Successfully');
+      toast.success('Đăng nhập thành công');
 
       navigate('/');
     } catch (error) {
@@ -87,7 +87,7 @@ function LoginComponent() {
         error={formError?.email}
       />
       <InputCustom
-        label={'Password'}
+        label={'Mật khẩu'}
         type={'password'}
         name={'password'}
         onChange={handleChange}
@@ -96,10 +96,10 @@ function LoginComponent() {
       />
 
       <p onClick={() => setModalType('forgot-password')} className={styles.forget}>
-        Forget password
+        Quên mật khẩu
       </p>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Gửi</button>
     </form>
   );
 }

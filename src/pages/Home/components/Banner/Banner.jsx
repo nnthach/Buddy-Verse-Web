@@ -12,13 +12,13 @@ function Banner() {
       <div className={styles.overlay} />
 
       <div className={styles['download-wrap']}>
-        {/*Logo app */}
+        {/*Logo ứng dụng */}
         <div className={styles['logo-app']}>
           <img src={mascotLogo} />
         </div>
         <h5>Buddy Verse</h5>
-        <p>Feel deeper, live truer</p>
-        {/*Download method */}
+        <p>Cảm nhận sâu sắc hơn, sống chân thật hơn</p>
+        {/*Phương thức tải xuống */}
 
         <div className={styles['logo-download']}>
           <img src={appstoreImg} />

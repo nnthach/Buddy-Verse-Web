@@ -1,23 +1,25 @@
-import { Link, Links } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FaBars } from 'react-icons/fa';
-import SideBar from '~/components/SideBar/SideBar';
 import { useContext, useEffect, useState } from 'react';
 import { SideBarContext } from '~/context/SidebarContext';
 import { AuthContext } from '~/context/AuthContext';
 
+// Component thanh điều hướng
 function Header({ aboutRef, goalsRef, membershipRef }) {
   const { setIsOpen } = useContext(SideBarContext);
   const [isScroll, setIsScroll] = useState(false);
 
   const { userInfo } = useContext(AuthContext);
 
+  // Hàm cuộn đến phần tử tham chiếu
   const scrollTo = (ref) => {
     console.log('ref', ref);
     setIsOpen(false);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Xử lý sự kiện cuộn trang
   useEffect(() => {
     const handleScroll = () => {
       console.log('window y', window);
@@ -34,24 +36,25 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
   }, []);
 
   return (
+    // Container chính của thanh điều hướng
     <div className={`${styles.wrap} ${isScroll && styles.scroll}`}>
       <div className={styles.container}>
-        {/*Logo */}
+        {/* Logo */}
         <div className={styles.logo}>buddyverse.</div>
-        {/*Navbar */}
+        {/* Thanh điều hướng */}
         <div className={styles.navbar}>
           <ul>
-            <li onClick={() => scrollTo(aboutRef)}>About Us</li>
-            <li onClick={() => scrollTo(goalsRef)}>Our Goals</li>
-            <li onClick={() => scrollTo(membershipRef)}>Membership</li>
+            <li onClick={() => scrollTo(aboutRef)}>Về chúng tôi</li>
+            <li onClick={() => scrollTo(goalsRef)}>Mục tiêu của chúng tôi</li>
+            <li onClick={() => scrollTo(membershipRef)}>Thành viên</li>
           </ul>
-          {/*Responsive */}
+          {/* Responsive */}
           <FaBars onClick={() => setIsOpen(true)} className={styles['bar-icon']} />
         </div>
-        {/*Auth */}
+        {/* Xác thực */}
         <div className={styles.auth}>
-          <Link to="auth/login">Sign In</Link>
-          <Link className={styles['get-start']}>Get Start</Link>
+          <Link to="auth/login">Đăng nhập</Link>
+          <Link className={styles['get-start']}>Bắt đầu</Link>
         </div>
       </div>
     </div>

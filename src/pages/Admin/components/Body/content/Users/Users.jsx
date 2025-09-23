@@ -4,22 +4,22 @@ import styles from './Users.module.scss';
 function Users() {
   const userSummaryData = [
     {
-      title: 'Total Users',
+      title: 'Tổng số người dùng',
       number: '4650',
       percent: 15.6,
     },
     {
-      title: 'Active Users',
+      title: 'Người dùng hoạt động',
       number: '4000',
       percent: 15.6,
     },
     {
-      title: 'Premium Users',
+      title: 'Người dùng cao cấp',
       number: '2600',
       percent: 15.6,
     },
     {
-      title: 'New This Month',
+      title: 'Người dùng mới trong tháng',
       number: '256',
       percent: 15.6,
     },
@@ -31,7 +31,7 @@ function Users() {
       username: 'nnthach',
       email: 'thach@gmail.com',
       phone: '0903532335',
-      membership: 'PREMIUM',
+      membership: 'CAO CẤP',
       createdAt: '24/04/2025',
     },
     {
@@ -39,7 +39,7 @@ function Users() {
       username: 'johndoe',
       email: 'john.doe@example.com',
       phone: '0905123456',
-      membership: 'BASIC',
+      membership: 'CƠ BẢN',
       createdAt: '01/05/2025',
     },
     {
@@ -47,7 +47,7 @@ function Users() {
       username: 'janesmith',
       email: 'jane.smith@example.com',
       phone: '0912123456',
-      membership: 'PREMIUM',
+      membership: 'CAO CẤP',
       createdAt: '02/05/2025',
     },
     {
@@ -55,7 +55,7 @@ function Users() {
       username: 'anhvu',
       email: 'anh.vu@example.com',
       phone: '0987654321',
-      membership: 'BASIC',
+      membership: 'CƠ BẢN',
       createdAt: '03/05/2025',
     },
     {
@@ -63,7 +63,7 @@ function Users() {
       username: 'linhnguyen',
       email: 'linh.nguyen@example.com',
       phone: '0909988776',
-      membership: 'PREMIUM',
+      membership: 'CAO CẤP',
       createdAt: '04/05/2025',
     },
     {
@@ -71,7 +71,7 @@ function Users() {
       username: 'hoangle',
       email: 'hoang.le@example.com',
       phone: '0911222333',
-      membership: 'BASIC',
+      membership: 'CƠ BẢN',
       createdAt: '05/05/2025',
     },
     {
@@ -79,7 +79,7 @@ function Users() {
       username: 'phamtuan',
       email: 'pham.tuan@example.com',
       phone: '0933444555',
-      membership: 'PREMIUM',
+      membership: 'CAO CẤP',
       createdAt: '06/05/2025',
     },
     {
@@ -87,7 +87,7 @@ function Users() {
       username: 'huyenpham',
       email: 'huyen.pham@example.com',
       phone: '0977665544',
-      membership: 'BASIC',
+      membership: 'CƠ BẢN',
       createdAt: '07/05/2025',
     },
     {
@@ -95,7 +95,7 @@ function Users() {
       username: 'trungkien',
       email: 'trung.kien@example.com',
       phone: '0955332211',
-      membership: 'PREMIUM',
+      membership: 'CAO CẤP',
       createdAt: '08/05/2025',
     },
     {
@@ -103,7 +103,7 @@ function Users() {
       username: 'minhhoang',
       email: 'minh.hoang@example.com',
       phone: '0966778899',
-      membership: 'BASIC',
+      membership: 'CƠ BẢN',
       createdAt: '09/05/2025',
     },
     {
@@ -111,7 +111,7 @@ function Users() {
       username: 'tientran',
       email: 'tien.tran@example.com',
       phone: '0944112233',
-      membership: 'PREMIUM',
+      membership: 'CAO CẤP',
       createdAt: '10/05/2025',
     },
     {
@@ -119,7 +119,7 @@ function Users() {
       username: 'quangvu',
       email: 'quang.vu@example.com',
       phone: '0933774466',
-      membership: 'BASIC',
+      membership: 'CƠ BẢN',
       createdAt: '11/05/2025',
     },
   ];
@@ -141,21 +141,21 @@ function Users() {
         ))}
       </div>
 
-      {/*Tabel */}
+      {/*Bảng*/}
       <div className={styles['content-wrap']}>
         <div className={styles['content-header']}>
-          <h2>Users Table</h2>
+          <h2>Bảng người dùng</h2>
         </div>
         <div className={styles['table-wrap']}>
           <table>
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Username</th>
+                <th>Tên người dùng</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>membership</th>
-                <th>Created At</th>
+                <th>Số điện thoại</th>
+                <th>Gói thành viên</th>
+                <th>Ngày tạo</th>
               </tr>
             </thead>
             <tbody>

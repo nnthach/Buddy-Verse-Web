@@ -1,5 +1,5 @@
 function Feedbacks() {
-  return <div>Feedbacks</div>;
+  return <div>Phản hồi</div>;
 }
 
 export default Feedbacks;

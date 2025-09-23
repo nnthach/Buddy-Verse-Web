@@ -3,52 +3,55 @@ import appstoreImg from '~/assets/images/download_appstore.webp';
 import chplayImg from '~/assets/images/download_chplay.webp';
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
 
+// Component chân trang
 function Footer() {
   return (
     <div className={styles.wrap}>
-      {/*Top */}
+      {/* Phần trên */}
       <div className={styles.top}>
-        {/*Logo */}
+        {/* Logo */}
         <div className={styles.logo}>buddyverse</div>
         <div className={styles['download-header']}>
-          <p>Download Now</p>
+          <p>Tải xuống ngay</p>
           <div className={styles['img-download-wrap']}>
-            <img src={appstoreImg} />
-            <img src={chplayImg} />
+            <img src={appstoreImg} alt="Tải từ App Store" />
+            <img src={chplayImg} alt="Tải từ CH Play" />
           </div>
         </div>
         <p className={styles.para}>
-          To anyone who feels alone: If you’re looking for real connections, someone to talk to, or simply new friends
-          to share life with, Buddy Verse is the place for you. With thousands of meaningful conversations already
-          started, Buddy Verse helps you discover your next genuine connection. The truth is, making friends today isn’t
-          the same as it used to be — most people now begin their connections online. With Buddy Verse, a social
-          platform designed to bring people closer, you’ll always find someone ready to listen, share, and connect.
+          Dành cho bất kỳ ai cảm thấy cô đơn: Nếu bạn đang tìm kiếm những kết nối thực sự, một người để trò chuyện, hoặc
+          chỉ đơn giản là những người bạn mới để chia sẻ cuộc sống, Buddy Verse là nơi dành cho bạn. Với hàng ngàn cuộc
+          trò chuyện ý nghĩa đã được bắt đầu, Buddy Verse giúp bạn khám phá những mối quan hệ chân thành tiếp theo. Sự
+          thật là, việc kết bạn ngày nay không còn như trước đây — hầu hết mọi người hiện nay bắt đầu các mối quan hệ
+          của họ qua mạng. Với Buddy Verse, một nền tảng xã hội được thiết kế để đưa mọi người đến gần nhau hơn, bạn sẽ
+          luôn tìm thấy ai đó sẵn sàng lắng nghe, chia sẻ và kết nối.
           <br />
           <br />
-          Whether you’re looking for support, friendship, or just someone who truly understands, Buddy Verse has a place
-          for you. Just moved to a new city? Want to meet peers who share your interests? Or simply need a safe space to
-          talk? Buddy Verse is here to help. Buddy Verse isn’t just another social app — it’s a diverse community where
-          people from all walks of life can build authentic relationships, create memories, and share experiences that
-          truly matter.
+          Dù bạn đang tìm kiếm sự hỗ trợ, tình bạn, hay chỉ cần một người thực sự hiểu bạn, Buddy Verse luôn có chỗ cho
+          bạn. Vừa chuyển đến một thành phố mới? Muốn gặp những người cùng sở thích? Hay chỉ cần một không gian an toàn
+          để trò chuyện? Buddy Verse luôn sẵn sàng hỗ trợ. Buddy Verse không chỉ là một ứng dụng xã hội thông thường —
+          đó là một cộng đồng đa dạng nơi mọi người từ mọi tầng lớp có thể xây dựng các mối quan hệ chân thực, tạo ra
+          những kỷ niệm và chia sẻ những trải nghiệm thực sự ý nghĩa.
         </p>
       </div>
       <div className={styles.line} />
-      {/*Bottom */}
+
+      {/* Phần dưới */}
       <div className={styles.bottom}>
         <div className={styles['footer-col']}>
-          <h5>Legal</h5>
-          <p>Privacy Policy</p>
-          <p>Terms of Service</p>
-          <p>Cookie Policy</p>
+          <h5>Pháp lý</h5>
+          <p>Chính sách bảo mật</p>
+          <p>Điều khoản dịch vụ</p>
+          <p>Chính sách cookie</p>
         </div>
         <div className={styles['footer-col']}>
-          <h5>Support</h5>
-          <p>Help Center</p>
-          <p>Contact Us</p>
-          <p>FAQs</p>
+          <h5>Hỗ trợ</h5>
+          <p>Trung tâm trợ giúp</p>
+          <p>Liên hệ với chúng tôi</p>
+          <p>Câu hỏi thường gặp</p>
         </div>
         <div className={styles['footer-col']}>
-          <h5>Contact</h5>
+          <h5>Liên hệ</h5>
           <div className={styles['footer-col-icon']}>
             <FaFacebook fontSize={30} /> <FaInstagram fontSize={30} /> <FaTiktok fontSize={30} />
           </div>
@@ -57,8 +60,8 @@ function Footer() {
 
       <div className={styles.line} />
 
-      {/*Sub bottom */}
-      <p>© 2025 Buddy Verse. All rights reserved.</p>
+      {/* Phần phụ dưới cùng */}
+      <p>© 2025 Buddy Verse. Bản quyền thuộc về Buddy Verse.</p>
     </div>
   );
 }

@@ -65,7 +65,7 @@ function InterestModal({ openModal, setOpenModal, refreshList, interestId, setIn
       <div className={styles.overlay} />
       <div className={styles.content}>
         <div className={styles['content-heading']}>
-          <h5>{uppercaseFirstChar(openModal)}</h5>
+          <h5>{uppercaseFirstChar(openModal == 'create' ? 'Tạo mới' : 'Chỉnh sửa')}</h5>
           <IoMdClose
             className={styles.close}
             size={24}
@@ -78,7 +78,7 @@ function InterestModal({ openModal, setOpenModal, refreshList, interestId, setIn
 
         <form onSubmit={handleSubmit}>
           <InputCustom
-            label={'Name'}
+            label={'Tên'}
             type={'text'}
             name={'name'}
             onChange={handleInputChange(setInterestForm)}
@@ -86,7 +86,7 @@ function InterestModal({ openModal, setOpenModal, refreshList, interestId, setIn
             required
           />
           <InputCustom
-            label={'Description'}
+            label={'Mô tả'}
             type={'text'}
             name={'description'}
             onChange={handleInputChange(setInterestForm)}
@@ -94,7 +94,7 @@ function InterestModal({ openModal, setOpenModal, refreshList, interestId, setIn
             required
           />
 
-          <button type="submit">{uppercaseFirstChar(openModal)}</button>
+          <button type="submit">{uppercaseFirstChar(openModal == 'create' ? 'Tạo mới' : 'Chỉnh sửa')}</button>
         </form>
       </div>
     </div>
