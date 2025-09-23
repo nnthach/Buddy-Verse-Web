@@ -53,8 +53,14 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
         </div>
         {/* Xác thực */}
         <div className={styles.auth}>
-          <Link to="auth/login">Đăng nhập</Link>
-          <Link className={styles['get-start']}>Bắt đầu</Link>
+          {userInfo ? (
+            <p>{userInfo?.username}</p>
+          ) : (
+            <>
+              <Link to="auth/login">Đăng nhập</Link>
+              <Link className={styles['get-start']}>Bắt đầu</Link>
+            </>
+          )}
         </div>
       </div>
     </div>

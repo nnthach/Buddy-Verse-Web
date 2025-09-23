@@ -1,16 +1,24 @@
-import { createContext, useState } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useEffect, useState } from 'react';
+import { getUserByIdAPI } from '~/services/userService';
 
-// Vô hiệu hóa quy tắc eslint cho việc chỉ xuất component
 export const AuthContext = createContext({
   isOpen: false,
 });
 
 // Nhà cung cấp ngữ cảnh xác thực
 export const AuthProvider = ({ children }) => {
-  const [userId, setUserId] = useState(localStorage.getItem('userId'));
+  const [userId, setUserId] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
   const [modalType, setModalType] = useState('');
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(storedUserId);
+    }
+  }, []);
 
   // Biểu mẫu đăng ký ban đầu
   const initialRegisterForm = {
@@ -29,6 +37,16 @@ export const AuthProvider = ({ children }) => {
   };
   const [submitRegisterForm, setSubmitRegisterForm] = useState(initialRegisterForm);
 
+  const handleGetUserById = async (id) => {
+    try {
+      const res = await getUserByIdAPI(id);
+      console.log('get user by id res', res.data);
+      setUserInfo(res.data);
+    } catch (error) {
+      console.log('get user by id err', error);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -41,6 +59,7 @@ export const AuthProvider = ({ children }) => {
         initialRegisterForm,
         submitRegisterForm,
         setSubmitRegisterForm,
+        handleGetUserById,
       }}
     >
       {children}

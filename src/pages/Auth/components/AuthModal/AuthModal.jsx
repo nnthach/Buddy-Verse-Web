@@ -8,12 +8,13 @@ import { forgotPasswordAPI, resetPasswordAPI, verifyOTPAPI } from '~/services/au
 import { toast } from 'react-toastify';
 
 function AuthModal() {
-  const { modalType, setModalType, userId } = useContext(AuthContext);
+  const { modalType, setModalType } = useContext(AuthContext);
 
   const [forgotPasswordForm, setForgotPasswordForm] = useState({
     email: '',
     otpCode: '',
     password: '',
+    accountId: '',
   });
 
   const [activeAccountForm, setActiveAccountForm] = useState({ activeOtp: '' });
@@ -43,10 +44,15 @@ function AuthModal() {
 
         console.log('fgpw email 1 res', res);
 
+        setForgotPasswordForm((prev) => ({
+          ...prev,
+          accountId: res.data?.accountId,
+        }));
+
         setStepForgetPassword(2);
+        toast.success(res.data.message);
       } catch (error) {
         console.log('email fgpw 1 err', error);
-        setStepForgetPassword(2);
       }
 
       // forgot step 2
@@ -54,7 +60,7 @@ function AuthModal() {
       if (!forgotPasswordForm.otpCode) return;
 
       const formData = {
-        accountId: userId,
+        accountId: forgotPasswordForm?.accountId,
         otpCode: forgotPasswordForm?.otpCode,
       };
       try {
@@ -70,7 +76,7 @@ function AuthModal() {
       }
     } else {
       const formData = {
-        accountId: userId,
+        accountId: forgotPasswordForm?.accountId,
         newPassword: forgotPasswordForm?.password,
       };
 

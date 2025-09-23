@@ -4,14 +4,13 @@ import InputCustom from '~/components/InputCustom/InputCustom';
 import { useContext, useState } from 'react';
 import { loginAPI } from '~/services/authService';
 import { AuthContext } from '~/context/AuthContext';
-import { handleInputChange, validationInput } from '~/utils/helpers';
+import { handleInputChange } from '~/utils/helpers';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 function LoginComponent() {
   const navigate = useNavigate();
-  const { userId, setUserId } = useContext(AuthContext);
-  const { setModalType } = useContext(AuthContext);
+  const { userId, setUserId, setModalType, handleGetUserById } = useContext(AuthContext);
   const [submitLoginForm, setSubmitLoginForm] = useState({
     password: '',
     email: '',
@@ -63,6 +62,8 @@ function LoginComponent() {
       localStorage.setItem('userId', res.data.accountId);
 
       setUserId(res.data.accountId);
+
+      await handleGetUserById(res.data.accountId);
 
       setSubmitLoginForm({
         password: '',
