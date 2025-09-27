@@ -4,6 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { SideBarContext } from '~/context/SidebarContext';
 import { AuthContext } from '~/context/AuthContext';
+import appLogoTextBeige from '~/assets/images/logoTextBeige.png';
 
 // Component thanh điều hướng
 function Header({ aboutRef, goalsRef, membershipRef }) {
@@ -40,7 +41,9 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
     <div className={`${styles.wrap} ${isScroll && styles.scroll}`}>
       <div className={styles.container}>
         {/* Logo */}
-        <div className={styles.logo}>buddyverse.</div>
+        <div className={styles.logo}>
+          <img src={appLogoTextBeige} />
+        </div>
         {/* Thanh điều hướng */}
         <div className={styles.navbar}>
           <ul>

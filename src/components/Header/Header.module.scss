@@ -3,12 +3,14 @@
 
 .wrap {
   background-color: transparent;
+  // background-color: blue;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: 30px 60px;
+  padding: 0 60px;
   z-index: 100;
+  height: 100px;
 
   @include respond-to(phone) {
     padding: 20px 30px;
@@ -16,10 +18,18 @@
 
   .container {
     @include flexBoxStyle(center, space-between, 0);
-
     color: white;
+    height: 100%;
 
     .logo {
+      // background-color: red;
+      height: 100%;
+      width: 200px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .navbar {

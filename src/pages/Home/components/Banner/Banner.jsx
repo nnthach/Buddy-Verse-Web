@@ -1,8 +1,10 @@
 import styles from './Banner.module.scss';
 import bannerHome from '~/assets/images/bannerhome.webp';
-import mascotLogo from '~/assets/images/robotmascot.webp';
+// import mascotLogo from '~/assets/images/robotmascot.webp';
 import appstoreImg from '~/assets/images/download_appstore.webp';
 import chplayImg from '~/assets/images/download_chplay.webp';
+import appLogo from '~/assets/images/applogo.png';
+
 function Banner() {
   return (
     <div className={styles.banner}>
@@ -14,7 +16,8 @@ function Banner() {
       <div className={styles['download-wrap']}>
         {/*Logo ứng dụng */}
         <div className={styles['logo-app']}>
-          <img src={mascotLogo} />
+          {/* <img src={mascotLogo} /> */}
+          <img src={appLogo} />
         </div>
         <h5>Buddy Verse</h5>
         <p>Cảm nhận sâu sắc hơn, sống chân thật hơn</p>

@@ -7,6 +7,7 @@ import Transactions from '~/pages/Admin/components/Body/content/Transactions/Tra
 import Feedbacks from '~/pages/Admin/components/Body/content/Feedbacks/Feedbacks';
 import Reports from '~/pages/Admin/components/Body/content/Reports/Reports';
 import Setting from '~/pages/Admin/components/Body/content/Setting/Setting';
+import Quest from '~/pages/Admin/components/Body/content/Quest/Quest';
 
 function Body({ content }) {
   const contentRender = () => {
@@ -21,6 +22,8 @@ function Body({ content }) {
         return <Feedbacks />;
       case 'reports':
         return <Reports />;
+      case 'quest':
+        return <Quest />;
       case 'setting':
         return <Setting />;
     }

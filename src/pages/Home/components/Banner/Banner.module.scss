@@ -41,7 +41,8 @@
       width: 200px;
       height: 200px;
       border-radius: 20px;
-      background-color: $beige-primary-color;
+      // background-color: $beige-primary-color;
+      overflow: hidden;
 
       img {
         width: 100%;

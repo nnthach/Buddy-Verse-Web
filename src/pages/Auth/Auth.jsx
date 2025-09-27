@@ -16,7 +16,7 @@ function Auth() {
 
   const navigate = useNavigate();
 
-  const { modalType, submitRegisterForm } = useContext(AuthContext);
+  const { modalType, submitRegisterForm, handleGetUserById } = useContext(AuthContext);
 
   useEffect(() => {
     if (type == 'register' && submitRegisterForm.interestIds.length === 0) {
@@ -36,6 +36,8 @@ function Auth() {
       localStorage.setItem('accessToken', res.data.accessToken);
       localStorage.setItem('refreshToken', res.data.refreshToken);
       localStorage.setItem('userId', res.data.accountId);
+
+      await handleGetUserById(res.data.accountId);
 
       toast.success('Đăng nhập thành công');
 

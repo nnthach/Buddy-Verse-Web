@@ -24,7 +24,10 @@ function Sidebar({ content, setContent }) {
             <MdOutlineAttachMoney size={20} /> Giao dịch
           </li>
           <li className={content == 'feedbacks' ? styles.active : undefined} onClick={() => setContent('feedbacks')}>
-            <IoChatboxOutline size={20} /> Phản hồi
+            <IoChatboxOutline size={20} /> Đánh giá
+          </li>
+          <li className={content == 'quest' ? styles.active : undefined} onClick={() => setContent('quest')}>
+            <IoChatboxOutline size={20} /> Nhiệm vụ
           </li>
           <li className={content == 'reports' ? styles.active : undefined} onClick={() => setContent('reports')}>
             <MdOutlineErrorOutline size={22} /> Báo cáo
