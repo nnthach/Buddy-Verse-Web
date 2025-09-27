@@ -6,6 +6,8 @@ import { handleInputChange } from '~/utils/helpers';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '~/context/AuthContext';
+import UploadAvatar from '~/pages/Auth/components/RegisterComponent/UploadAvatar';
+import uploadFile from '~/utils/uploadImg';
 
 function RegisterComponent() {
   const navigate = useNavigate();
@@ -15,6 +17,8 @@ function RegisterComponent() {
   ];
   const [registerFormStep, setRegisterFormStep] = useState(1);
   const { initialRegisterForm, submitRegisterForm, setSubmitRegisterForm } = useContext(AuthContext);
+  // file list upload img antd
+  const [fileList, setFileList] = useState([]);
 
   const [formError, setFormError] = useState(null);
 
@@ -101,13 +105,27 @@ function RegisterComponent() {
       return;
     }
 
-    if (validateStep2()) {
+    if (registerFormStep == 2) {
+      if (validateStep2()) return;
+      setRegisterFormStep(3);
       return;
     }
 
+    let imageUrl = '';
+    if (fileList[0]?.originFileObj) {
+      imageUrl = await uploadFile(fileList[0].originFileObj);
+      console.log('Uploaded URL:', imageUrl);
+    }
+
+    const newSubmitRegisterForm = {
+      ...submitRegisterForm,
+      photoUrls: [imageUrl],
+    };
+
+    console.log('new submitRegisterForm', newSubmitRegisterForm);
+
     try {
-      console.log('register data', submitRegisterForm);
-      const res = await registerAPI(submitRegisterForm);
+      const res = await registerAPI(newSubmitRegisterForm);
 
       console.log('res register', res);
 
@@ -159,7 +177,7 @@ function RegisterComponent() {
             error={formError?.gender}
           />
         </>
-      ) : (
+      ) : registerFormStep == 2 ? (
         <>
           <InputCustom
             label={'Tên người dùng'}
@@ -196,9 +214,13 @@ function RegisterComponent() {
             error={formError?.confirmPassword}
           />
         </>
+      ) : (
+        <>
+          <UploadAvatar setFileList={setFileList} fileList={fileList} />
+        </>
       )}
 
-      <button type="submit">{registerFormStep == 1 ? 'Tiếp tục' : 'Gửi'}</button>
+      <button type="submit">{registerFormStep == 1 || registerFormStep == 2 ? 'Tiếp tục' : 'Gửi'}</button>
     </form>
   );
 }

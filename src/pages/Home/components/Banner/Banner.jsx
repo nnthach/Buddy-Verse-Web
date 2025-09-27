@@ -1,5 +1,5 @@
 import styles from './Banner.module.scss';
-import bannerHome from '~/assets/images/bannerhome.webp';
+import bannerHome from '~/assets/images/bannerhome2.webp';
 // import mascotLogo from '~/assets/images/robotmascot.webp';
 import appstoreImg from '~/assets/images/download_appstore.webp';
 import chplayImg from '~/assets/images/download_chplay.webp';

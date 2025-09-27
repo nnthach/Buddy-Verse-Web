@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Links } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FaBars } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
@@ -42,7 +42,9 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
       <div className={styles.container}>
         {/* Logo */}
         <div className={styles.logo}>
-          <img src={appLogoTextBeige} />
+          <Link to="/">
+            <img src={appLogoTextBeige} />
+          </Link>
         </div>
         {/* Thanh điều hướng */}
         <div className={styles.navbar}>
@@ -61,7 +63,9 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
           ) : (
             <>
               <Link to="auth/login">Đăng nhập</Link>
-              <Link className={styles['get-start']}>Bắt đầu</Link>
+              <Link className={styles['get-start']} to="get-start">
+                Bắt đầu
+              </Link>
             </>
           )}
         </div>
