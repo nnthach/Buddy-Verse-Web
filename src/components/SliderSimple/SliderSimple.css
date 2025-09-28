@@ -1,5 +1,4 @@
-@import '~/styles/mixin.module.scss';
-@import '~/styles/variable.module.scss';
+
 
 .slick-slider:hover .slick-arrow {
   background-color: rgb(243, 243, 243);
