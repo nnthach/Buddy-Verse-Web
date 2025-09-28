@@ -37,6 +37,7 @@
         @include flexBoxStyle(center, center, 40px);
         list-style: none;
         color: $beige-primary-color;
+        font-weight: 500;
         font-size: larger;
 
         li {
@@ -67,6 +68,7 @@
       a {
         color: $beige-primary-color;
         text-decoration: none;
+        font-weight: 500;
       }
       .get-start {
         background-color: rgba(212, 212, 212, 0.3);
