@@ -1,18 +1,19 @@
 import Slider from 'react-slick';
 import styles from './OurGoal.module.scss';
-import connectImg from '~/assets/images/goal_connect.webp';
-import connectImg2 from '~/assets/images/goal_connect2.webp';
-import connectImg3 from '~/assets/images/goal_connect3.webp';
-import connectImg4 from '~/assets/images/goal_connect4.webp';
-import connectImg5 from '~/assets/images/goal_connect5.webp';
-import connectImg6 from '~/assets/images/goal_connect6.webp';
+
+import goal1 from '~/assets/images/goal1.jpg';
+import goal2 from '~/assets/images/goal2.jpg';
+import goal3 from '~/assets/images/goal3.jpg';
+import goal4 from '~/assets/images/goal4.jpg';
+import goal5 from '~/assets/images/goal5.jpg';
+import goal6 from '~/assets/images/goal6.jpg';
 import SliderSimple from '~/components/SliderSimple/SliderSimple';
 import { forwardRef, useState } from 'react';
 
 const OurGoal = forwardRef((props, ref) => {
   const [currentImg, setCurrentImg] = useState(0);
 
-  const imgData = [connectImg, connectImg2, connectImg3, connectImg4, connectImg5, connectImg6];
+  const imgData = [goal1, goal2, goal3, goal4, goal5, goal6];
 
   const prevSlide = () => {
     setCurrentImg((prev) => (prev === 0 ? imgData.length - 1 : prev - 1));

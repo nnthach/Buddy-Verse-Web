@@ -3,12 +3,18 @@ import styles from './Sidebar.module.scss';
 import { LuLayoutDashboard, LuUsers, LuSettings } from 'react-icons/lu';
 import { IoChatboxOutline } from 'react-icons/io5';
 import { MdOutlineErrorOutline, MdOutlineAttachMoney, MdLogout } from 'react-icons/md';
+import logo from '~/assets/images/logoTextPurple.png';
+import { Link } from 'react-router-dom';
 
 function Sidebar({ content, setContent }) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.top}>
-        <h3>Buddy Verse</h3>
+        <div className={styles['logo-wrap']}>
+          <Link to="/">
+            <img src={logo} />
+          </Link>
+        </div>
         <ul>
           <li className={content == 'overview' ? styles.active : undefined} onClick={() => setContent('overview')}>
             <LuLayoutDashboard size={20} /> Tổng quan

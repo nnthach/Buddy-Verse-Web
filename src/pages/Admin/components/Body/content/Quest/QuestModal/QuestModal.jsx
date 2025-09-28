@@ -67,9 +67,10 @@ function QuestModal({ openModal, setOpenModal, refreshList, questId, setQuestId 
 
         await refreshList();
 
-        toast.success(res.data.message);
+        toast.success('Tạo thành công');
       } catch (error) {
         console.log('create quest err', error);
+        toast.success('Tạo thất bại');
       }
     } else if (openModal == 'edit') {
       try {
@@ -78,9 +79,10 @@ function QuestModal({ openModal, setOpenModal, refreshList, questId, setQuestId 
 
         await refreshList();
 
-        toast.success(res.data.message);
+        toast.success('Chỉnh sửa thành công');
       } catch (error) {
         console.log('update quest err', error);
+        toast.success('Chỉnh sửa thất bại');
       }
     }
   };
