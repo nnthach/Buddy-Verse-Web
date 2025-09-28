@@ -1,5 +1,5 @@
 import styles from './Banner.module.scss';
-import bannerHome from '~/assets/images/bannerHome.png';
+import bannerHome from '~/assets/images/newBannerHome.png';
 import appstoreImg from '~/assets/images/download_appstore.webp';
 import chplayImg from '~/assets/images/download_chplay.webp';
 import appLogo from '~/assets/images/applogo.png';
