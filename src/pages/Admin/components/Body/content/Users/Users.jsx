@@ -1,5 +1,7 @@
 import { FaArrowTrendUp } from 'react-icons/fa6';
 import styles from './Users.module.scss';
+import { useState } from 'react';
+import Pagination from '~/components/Pagination/Pagination';
 
 function Users() {
   const userSummaryData = [
@@ -124,6 +126,13 @@ function Users() {
     },
   ];
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProduct = userListData.slice(indexOfFirstProduct, indexOfLastProduct);
+
   return (
     <div className={styles.wrap}>
       <div className={styles['top-summary']}>
@@ -159,7 +168,7 @@ function Users() {
               </tr>
             </thead>
             <tbody>
-              {userListData.map((user) => (
+              {currentProduct.map((user) => (
                 <tr key={user.id}>
                   <td>{user.id}</td>
                   <td style={{ fontWeight: 'bold' }}>{user.username}</td>
@@ -173,6 +182,13 @@ function Users() {
               ))}
             </tbody>
           </table>
+
+          <Pagination
+            productsPerPage={productsPerPage}
+            totalProducts={userListData.length}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './Auth.module.scss';
-import { FaGoogle, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import AuthModal from '~/pages/Auth/components/AuthModal/AuthModal';
 import { AuthContext } from '~/context/AuthContext';
@@ -9,6 +8,7 @@ import RegisterComponent from '~/pages/Auth/components/RegisterComponent/Registe
 import LoginComponent from '~/pages/Auth/components/LoginComponent/LoginComponent';
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { loginGoogleAPI } from '~/services/authService';
+import appLogo from '~/assets/images/applogo.png';
 import { toast } from 'react-toastify';
 
 function Auth() {
@@ -57,7 +57,9 @@ function Auth() {
 
       {modalType == '' ? (
         <div className={styles.content}>
-          <h1>{type === 'login' ? 'Đăng nhập' : 'Đăng ký'}</h1>
+          <div className={styles['auth-heading']}>
+            <h1>{type === 'login' ? 'Đăng nhập' : 'Đăng ký'}</h1>
+          </div>
 
           {type == 'login' ? <LoginComponent /> : <RegisterComponent />}
 
@@ -69,15 +71,6 @@ function Auth() {
           <div className={styles['login-method']}>
             <div className={styles.list}>
               <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleError} useOneTap />
-              {/* <div onClick={() => loginGoogle()} className={styles['login-method-icon']}>
-                <FaGoogle color="red" size={24} />
-              </div>
-              <div>
-                <FaFacebook color="blue" size={26} className={styles['login-method-icon']} />
-              </div>
-              <div>
-                <FaTwitter color="#1DA1F2" size={24} className={styles['login-method-icon']} />
-              </div> */}
             </div>
           </div>
           <p className={styles['footer-text']}>

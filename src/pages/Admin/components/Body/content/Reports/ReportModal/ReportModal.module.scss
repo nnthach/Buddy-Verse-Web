@@ -1,0 +1,76 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  @include flexBoxStyle(center, center, 0);
+  z-index: 1000;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 500px;
+
+    .content-heading {
+      text-align: center;
+      position: relative;
+      margin-bottom: 20px;
+
+      h5 {
+        font-size: 20px;
+        color: $purple-primary-color;
+      }
+
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+      }
+    }
+
+    .report-content {
+      background-color: rgb(250, 250, 250);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .button-wrap {
+      @include flexBoxStyle(center, space-between, 10px);
+
+      button {
+        @include btn(100%, auto, 12px, red, white);
+        padding: 10px 0;
+        margin-top: 10px;
+
+        &:last-child {
+          background-color: green;
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

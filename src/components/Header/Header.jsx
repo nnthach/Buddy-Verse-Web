@@ -59,7 +59,13 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
         {/* Xác thực */}
         <div className={styles.auth}>
           {userInfo ? (
-            <p>{userInfo?.username}</p>
+            userInfo?.role === 'admin' ? (
+              <p>
+                <Link to={'/admin'}>Go to Dashboard</Link>
+              </p>
+            ) : (
+              <p>{userInfo?.username}</p>
+            )
           ) : (
             <>
               <Link to="auth/login">Đăng nhập</Link>

@@ -1,0 +1,95 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.wrap {
+  .report-wrap {
+    margin-top: 40px;
+    background-color: white;
+    border-radius: 12px;
+    border: 0.5px solid lightgray;
+
+    .heading {
+      @include flexBoxStyle(center, space-between, 0);
+      padding: 16px 24px;
+      border-bottom: 0.5px solid lightgray;
+
+      h3 {
+        font-size: 18px;
+        font-weight: 550;
+        color: black;
+      }
+
+      .select-status {
+        @include flexBoxStyle(center, none, 0);
+        border-radius: 12px;
+        overflow: hidden;
+
+        p {
+          background-color: rgb(243, 243, 243);
+          padding: 10px 10px;
+          color: rgb(152, 152, 152);
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .active {
+          background-color: $purple-primary-color;
+          color: $beige-primary-color;
+        }
+      }
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        thead {
+          background-color: #f9fafb;
+
+          border-bottom: 0.5px solid lightgray;
+
+          tr {
+            th {
+              padding: 12px 24px;
+              text-align: left;
+              font-weight: 500;
+              font-size: 12px;
+              color: rgb(133, 133, 133);
+              text-transform: uppercase;
+            }
+          }
+        }
+        tbody {
+          tr {
+            border-bottom: 0.5px solid lightgray;
+            padding: 20px 24px;
+
+            td {
+              padding: 16px 24px;
+              color: rgb(53, 53, 53);
+              font-size: 14px;
+              span {
+                font-weight: 600;
+                padding: 5px 10px;
+                border-radius: 10px;
+              }
+            }
+
+            .pending {
+              background-color: rgb(244, 244, 5);
+              color: white;
+            }
+
+            .one-row {
+              white-space: nowrap;
+              overflow: hidden;
+              max-width: 120px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

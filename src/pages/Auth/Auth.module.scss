@@ -22,11 +22,20 @@
     width: 350px;
     z-index: 1;
 
-    h1 {
+    .auth-heading {
       text-align: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: $purple-primary-color;
+      h1 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: $purple-primary-color;
+      }
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 30%;
+        margin-bottom: 5px;
+      }
     }
 
     form {

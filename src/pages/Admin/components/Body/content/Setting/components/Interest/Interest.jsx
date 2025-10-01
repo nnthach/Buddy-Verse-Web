@@ -4,12 +4,20 @@ import { deleteInterestAPI, getInterestListAPI } from '~/services/interestServic
 import InterestModal from '~/pages/Admin/components/Body/content/Setting/components/Interest/InterestModal/InterestModal';
 import { CiEdit, CiTrash } from 'react-icons/ci';
 import { toast } from 'react-toastify';
+import Pagination from '~/components/Pagination/Pagination';
 
 function Interest() {
   const [interestList, setInterestList] = useState([]);
 
   const [openModal, setOpenModal] = useState('');
   const [interestId, setInterestId] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProduct = interestList.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const handleGetInterestList = useCallback(async () => {
     try {
@@ -59,7 +67,7 @@ function Interest() {
                 </tr>
               </thead>
               <tbody>
-                {interestList.map((item) => (
+                {currentProduct.map((item) => (
                   <tr key={item.interestId}>
                     <td>{item.interestId}</td>
                     <td style={{ fontWeight: 550 }}>{item.name}</td>
@@ -86,6 +94,13 @@ function Interest() {
                 ))}
               </tbody>
             </table>
+
+            <Pagination
+              productsPerPage={productsPerPage}
+              totalProducts={interestList.length}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
       </div>

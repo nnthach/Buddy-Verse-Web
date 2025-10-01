@@ -13,13 +13,14 @@ export const publicRouters = [
     component: <Auth />,
   },
   {
-    path: '/admin',
-    component: <Admin />,
-  },
-  {
     path: '/get-start',
     component: <GetStart />,
   },
 ];
 
-export const privateRouters = [];
+export const privateRouters = [
+  {
+    path: '/admin',
+    component: <Admin />,
+  },
+];
