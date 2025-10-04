@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+
   // Biểu mẫu đăng ký ban đầu
   const initialRegisterForm = {
     password: '',

@@ -1,26 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './Quest.module.scss';
 import { FaArrowTrendUp } from 'react-icons/fa6';
 import { deleteQuestAPI, getQuestListAPI } from '~/services/questService';
 import { toast } from 'react-toastify';
 import { CiEdit, CiTrash } from 'react-icons/ci';
 import QuestModal from '~/pages/Admin/components/Body/content/Quest/QuestModal/QuestModal';
+import useFetchList from '~/hooks/useFetchList';
+import { Spin } from 'antd';
 
 function Quest() {
-  const [questList, setQuestList] = useState([]);
+  const { data: questList, loading, refresh } = useFetchList(getQuestListAPI);
 
   const [openModal, setOpenModal] = useState('');
   const [questId, setQuestId] = useState('');
-
-  const handleGetQuestList = useCallback(async () => {
-    try {
-      const res = await getQuestListAPI();
-      console.log('get queslist api', res);
-      setQuestList(res.data);
-    } catch (error) {
-      console.log('get quest list err', error);
-    }
-  }, []);
 
   const handleDeleteQuest = async (id) => {
     const isConfirm = window.confirm('Bạn có chắc chắn muốn xóa nhiệm vụ này?');
@@ -30,16 +22,12 @@ function Quest() {
       const res = await deleteQuestAPI(id);
       console.log('delete quest res', res);
 
-      await handleGetQuestList();
+      await refresh();
       toast.success(res.data.message);
     } catch (error) {
       console.log('delete quest', error);
     }
   };
-
-  useEffect(() => {
-    handleGetQuestList();
-  }, []);
 
   const questSummaryData = [
     {
@@ -92,39 +80,47 @@ function Quest() {
                 </tr>
               </thead>
               <tbody>
-                {questList.map((quest) => (
-                  <tr key={quest.questId}>
-                    <td>{quest.questId}</td>
-                    <td style={{ fontWeight: 'bold' }}>{quest.title}</td>
-                    <td>{quest.type}</td>
-                    <td>{quest.rewardPoints}</td>
-                    <td>
-                      {quest.isActive ? (
-                        <span className={styles['active-true']}>Hoạt động</span>
-                      ) : (
-                        <span className={styles['active-false']}>Ngưng hoạt động</span>
-                      )}
-                    </td>
-                    <td>{quest.expiredAt}</td>
-                    <td>
-                      <CiEdit
-                        size={24}
-                        color="blue"
-                        style={{ marginRight: 10, cursor: 'pointer' }}
-                        onClick={() => {
-                          setQuestId(quest.questId);
-                          setOpenModal('edit');
-                        }}
-                      />
-                      <CiTrash
-                        size={24}
-                        color="red"
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => handleDeleteQuest(quest.questId)}
-                      />
+                {loading ? (
+                  <tr>
+                    <td colSpan={6} style={{ textAlign: 'center', padding: '20px' }}>
+                      <Spin />
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  questList.map((quest) => (
+                    <tr key={quest.questId}>
+                      <td>{quest.questId}</td>
+                      <td style={{ fontWeight: 'bold' }}>{quest.title}</td>
+                      <td>{quest.type}</td>
+                      <td>{quest.rewardPoints}</td>
+                      <td>
+                        {quest.isActive ? (
+                          <span className={styles['active-true']}>Hoạt động</span>
+                        ) : (
+                          <span className={styles['active-false']}>Ngưng hoạt động</span>
+                        )}
+                      </td>
+                      <td>{quest.expiredAt}</td>
+                      <td>
+                        <CiEdit
+                          size={24}
+                          color="blue"
+                          style={{ marginRight: 10, cursor: 'pointer' }}
+                          onClick={() => {
+                            setQuestId(quest.questId);
+                            setOpenModal('edit');
+                          }}
+                        />
+                        <CiTrash
+                          size={24}
+                          color="red"
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => handleDeleteQuest(quest.questId)}
+                        />
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -135,7 +131,7 @@ function Quest() {
         <QuestModal
           openModal={openModal}
           setOpenModal={setOpenModal}
-          refreshList={handleGetQuestList}
+          refreshList={refresh}
           questId={questId}
           setQuestId={setQuestId}
         />

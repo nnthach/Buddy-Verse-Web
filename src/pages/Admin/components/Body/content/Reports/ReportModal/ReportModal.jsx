@@ -1,6 +1,5 @@
 import styles from './ReportModal.module.scss';
 import { IoMdClose } from 'react-icons/io';
-import InputCustom from '~/components/InputCustom/InputCustom';
 import { memo, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getReportDetailAPI, updateReportAcceptAPI, updateReportRejectAPI } from '~/services/reportService';

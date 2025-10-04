@@ -5,9 +5,13 @@ import InterestModal from '~/pages/Admin/components/Body/content/Setting/compone
 import { CiEdit, CiTrash } from 'react-icons/ci';
 import { toast } from 'react-toastify';
 import Pagination from '~/components/Pagination/Pagination';
+import useFetchList from '~/hooks/useFetchList';
+import { Spin } from 'antd';
 
 function Interest() {
-  const [interestList, setInterestList] = useState([]);
+  // const [interestList, setInterestList] = useState([]);
+
+  const { data: interestList, loading, refresh } = useFetchList(getInterestListAPI);
 
   const [openModal, setOpenModal] = useState('');
   const [interestId, setInterestId] = useState('');
@@ -17,16 +21,7 @@ function Interest() {
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProduct = interestList.slice(indexOfFirstProduct, indexOfLastProduct);
-
-  const handleGetInterestList = useCallback(async () => {
-    try {
-      const res = await getInterestListAPI();
-      setInterestList(res.data);
-    } catch (error) {
-      console.log('get interest list err', error);
-    }
-  }, []);
+  const currentProduct = interestList?.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const handleDeleteInterest = async (id) => {
     const isConfirm = window.confirm('Bạn có chắc chắn muốn xóa sở thích này?');
@@ -36,16 +31,13 @@ function Interest() {
       const res = await deleteInterestAPI(id);
       console.log('delete interest res', res);
 
-      await handleGetInterestList();
+      await refresh();
       toast.success(res.data.message);
     } catch (error) {
       console.log('delete interest', error);
     }
   };
 
-  useEffect(() => {
-    handleGetInterestList();
-  }, []);
   return (
     <>
       <div className={styles.wrap}>
@@ -67,37 +59,45 @@ function Interest() {
                 </tr>
               </thead>
               <tbody>
-                {currentProduct.map((item) => (
-                  <tr key={item.interestId}>
-                    <td>{item.interestId}</td>
-                    <td style={{ fontWeight: 550 }}>{item.name}</td>
-                    <td>{item.description}</td>
-                    <td>{item.createdAt}</td>
-                    <td>
-                      <CiEdit
-                        size={24}
-                        color="blue"
-                        style={{ marginRight: 10, cursor: 'pointer' }}
-                        onClick={() => {
-                          setInterestId(item.interestId);
-                          setOpenModal('edit');
-                        }}
-                      />
-                      <CiTrash
-                        size={24}
-                        color="red"
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => handleDeleteInterest(item.interestId)}
-                      />
+                {loading ? (
+                  <tr>
+                    <td colSpan={6} style={{ textAlign: 'center', padding: '20px' }}>
+                      <Spin />
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  currentProduct.map((item) => (
+                    <tr key={item.interestId}>
+                      <td>{item.interestId}</td>
+                      <td style={{ fontWeight: 550 }}>{item.name}</td>
+                      <td>{item.description}</td>
+                      <td>{item.createdAt}</td>
+                      <td>
+                        <CiEdit
+                          size={24}
+                          color="blue"
+                          style={{ marginRight: 10, cursor: 'pointer' }}
+                          onClick={() => {
+                            setInterestId(item.interestId);
+                            setOpenModal('edit');
+                          }}
+                        />
+                        <CiTrash
+                          size={24}
+                          color="red"
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => handleDeleteInterest(item.interestId)}
+                        />
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
 
             <Pagination
               productsPerPage={productsPerPage}
-              totalProducts={interestList.length}
+              totalProducts={interestList?.length}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
@@ -109,7 +109,7 @@ function Interest() {
         <InterestModal
           openModal={openModal}
           setOpenModal={setOpenModal}
-          refreshList={handleGetInterestList}
+          refreshList={refresh}
           interestId={interestId}
           setInterestId={setInterestId}
         />

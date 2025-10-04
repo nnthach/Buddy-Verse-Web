@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getReportListAPI } from '~/services/reportService';
 import styles from './Report.module.scss';
 import ReportModal from '~/pages/Admin/components/Body/content/Reports/ReportModal/ReportModal';
 import { FaEye } from 'react-icons/fa';
 import Pagination from '~/components/Pagination/Pagination';
 import { formatDate } from '~/utils/transform';
+import useFetchList from '~/hooks/useFetchList';
+import { Spin } from 'antd';
 
 function Reports() {
-  const [reportList, setReportList] = useState([]);
   const [getReportType, setGetReportType] = useState('pending');
+
+  const { data: reportList, loading, refresh } = useFetchList(getReportListAPI, getReportType);
 
   const [reportId, setReportId] = useState('');
 
@@ -17,21 +20,8 @@ function Reports() {
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProduct = reportList.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProduct = reportList?.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  const handleGetReportList = useCallback(async () => {
-    try {
-      const res = await getReportListAPI(getReportType);
-      console.log('report list res', res.data);
-      setReportList(res.data);
-    } catch (error) {
-      console.log('get report list err', error);
-    }
-  }, [getReportType]);
-
-  useEffect(() => {
-    handleGetReportList();
-  }, [getReportType]);
   return (
     <>
       <div className={styles.wrap}>
@@ -75,7 +65,13 @@ function Reports() {
                 </tr>
               </thead>
               <tbody>
-                {currentProduct.length > 0 ? (
+                {loading ? (
+                  <tr>
+                    <td colSpan={6} style={{ textAlign: 'center', padding: '20px' }}>
+                      <Spin />
+                    </td>
+                  </tr>
+                ) : currentProduct?.length > 0 ? (
                   currentProduct.map((item) => (
                     <tr key={item.reportId}>
                       <td style={{ fontWeight: 500 }}>{item.reason}</td>
@@ -119,7 +115,7 @@ function Reports() {
 
             <Pagination
               productsPerPage={productsPerPage}
-              totalProducts={reportList.length}
+              totalProducts={reportList?.length}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
@@ -127,9 +123,7 @@ function Reports() {
         </div>
       </div>
 
-      {reportId != '' && (
-        <ReportModal refreshList={handleGetReportList} reportId={reportId} setReportId={setReportId} />
-      )}
+      {reportId != '' && <ReportModal refreshList={refresh} reportId={reportId} setReportId={setReportId} />}
     </>
   );
 }
