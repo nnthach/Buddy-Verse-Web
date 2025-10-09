@@ -11,7 +11,7 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
   const { setIsOpen } = useContext(SideBarContext);
   const [isScroll, setIsScroll] = useState(false);
 
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, handleLogout } = useContext(AuthContext);
 
   // Hàm cuộn đến phần tử tham chiếu
   const scrollTo = (ref) => {
@@ -23,9 +23,6 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
   // Xử lý sự kiện cuộn trang
   useEffect(() => {
     const handleScroll = () => {
-      console.log('window y', window);
-      console.log('full window', Object.getOwnPropertyNames(window));
-
       if (window.pageYOffset >= window.innerHeight * 0.8) {
         setIsScroll(true);
       } else {
@@ -59,13 +56,20 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
         {/* Xác thực */}
         <div className={styles.auth}>
           {userInfo ? (
-            userInfo?.role === 'admin' ? (
-              <p>
-                <Link to={'/admin'}>Go to Dashboard</Link>
-              </p>
-            ) : (
+            <div className={styles['user-wrap']}>
               <p>{userInfo?.username}</p>
-            )
+              <div className={styles['dropdown-menu']}>
+                {userInfo.roleId == 'c5b82656-c6a7-49bd-a3fb-3d3e07022d33' && (
+                  <p>
+                    <Link to={'/admin'}>Admin</Link>
+                  </p>
+                )}
+                <p>
+                  <Link to={'/account/detail'}>My Account</Link>
+                </p>
+                <p onClick={() => handleLogout()}>Sign Out</p>
+              </div>
+            </div>
           ) : (
             <>
               <Link to="auth/login">Đăng nhập</Link>

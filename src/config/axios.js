@@ -2,7 +2,7 @@ import axios from 'axios';
 import { refreshTokenAPI } from '~/services/authService';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5116/api',
+  baseURL: 'http://160.187.1.204:8080/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

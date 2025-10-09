@@ -1,66 +1,13 @@
 import { forwardRef } from 'react';
 import styles from './Membership.module.scss';
 import { IoIosCloseCircle, IoIosCheckmarkCircle } from 'react-icons/io';
+import useFetchList from '~/hooks/useFetchList';
+import { getSubscriptionPlanListAPI } from '~/services/subscriptionPlanService';
 
 const Membership = forwardRef((props, ref) => {
-  const membershipPlansData = [
-    {
-      info: {
-        name: 'CƠ BẢN',
-        price: '29,999',
-        rule: 'Mỗi thành viên, mỗi tháng',
-        description: 'Dành cho tất cả cá nhân và người mới bắt đầu muốn thử với lĩnh vực tên miền.',
-      },
-      benefits: [
-        { label: 'Truy cập tất cả tính năng', available: true },
-        { label: '1k lượt tra cứu / mỗi tháng', available: true },
-        { label: 'Không có tín dụng API', available: false },
-        { label: 'Hạn mức giám sát 10', available: true },
-        { label: 'Khoảng thời gian giám sát 60 phút', available: true },
-        { label: 'Giảm giá 20% cho đơn đặt trước', available: true },
-        { label: 'Định giá tên miền', available: true, tag: 'Sắp ra mắt' },
-      ],
-    },
-    {
-      info: {
-        tag: 'Phổ biến',
-        name: 'CAO CẤP',
-        price: '49,999',
-        rule: 'Mỗi thành viên, mỗi tháng',
-        description: 'Dành cho các nhà đầu tư tên miền chuyên nghiệp với danh mục lớn.',
-      },
-      benefits: [
-        { label: 'Truy cập tất cả tính năng', available: true },
-        { label: '1k lượt tra cứu / mỗi tháng', available: true },
-        { label: '30k tín dụng API / tháng', available: true },
-        { label: 'Hạn mức giám sát 10', available: true },
-        { label: 'Khoảng thời gian giám sát 60 phút', available: true },
-        { label: 'Giảm giá 20% cho đơn đặt trước', available: true },
-        { label: 'Định giá tên miền', available: true, tag: 'Sắp ra mắt' },
-        { label: 'Giám sát IP', available: true, tag: 'Sắp ra mắt' },
-        { label: 'Giám sát liên kết ngược', available: true, tag: 'Sắp ra mắt' },
-      ],
-    },
-    {
-      info: {
-        name: 'NÂNG CAO',
-        price: '499,999',
-        rule: 'Mỗi thành viên, mỗi năm',
-        description: 'Dành cho các nhà đầu tư tên miền chuyên nghiệp với danh mục lớn.',
-      },
-      benefits: [
-        { label: 'Truy cập tất cả tính năng', available: true },
-        { label: '1k lượt tra cứu / mỗi tháng', available: true },
-        { label: '30k tín dụng API / tháng', available: true },
-        { label: 'Hạn mức giám sát 10', available: true },
-        { label: 'Khoảng thời gian giám sát 60 phút', available: true },
-        { label: 'Giảm giá 20% cho đơn đặt trước', available: true },
-        { label: 'Định giá tên miền', available: true, tag: 'Sắp ra mắt' },
-        { label: 'Giám sát IP', available: true, tag: 'Sắp ra mắt' },
-        { label: 'Giám sát liên kết ngược', available: true, tag: 'Sắp ra mắt' },
-      ],
-    },
-  ];
+  const { data: subscriptionPlanList } = useFetchList(getSubscriptionPlanListAPI);
+
+  console.log('subcription plan', subscriptionPlanList);
   return (
     <div ref={ref} className={styles.wrap}>
       <div className={styles.container}>
@@ -68,40 +15,42 @@ const Membership = forwardRef((props, ref) => {
         <p className={styles.tagline}>Mở khóa trải nghiệm tốt hơn</p>
 
         <div className={styles.content}>
-          {membershipPlansData.map((item, index) => (
+          {subscriptionPlanList.map((item, index) => (
             <div
               key={index}
-              className={`${styles['membership-card']} ${item.info.name == 'CƠ BẢN' ? styles.basic : styles.premium}`}
+              className={`${styles['membership-card']} ${item?.name == 'Gói cơ bản' ? styles.basic : styles.premium}`}
             >
               <div className={styles['membership-content']}>
                 {/*Header */}
                 <div className={styles['header']}>
-                  {item.info.tag && <p className={styles['tag']}>Phổ biến</p>}
-                  <h2 className={`${styles['name']}`}>{item.info.name}</h2>
-                  <p className={styles['description']}>{item.info.description}</p>
+                  {item.name == 'Gói cao cấp' && <p className={styles['tag']}>Phổ biến</p>}
+                  <h2 className={`${styles['name']}`}>{item?.name}</h2>
+                  <p className={styles['description']}>{item?.description}</p>
                 </div>
                 {/*Price */}
                 <div className={styles['price']}>
-                  <h3 className={styles['value']}>{item.info.price} đ</h3>
-                  <p className={styles['rule']}>{item.info.rule}</p>
+                  <h3 className={styles['value']}>{item?.price} đ</h3>
+                  <p className={styles['rule']}>
+                    {item?.name == 'Gói theo năm' ? 'Mỗi thành viên mỗi năm' : 'Mỗi thành viên mỗi tháng'}
+                  </p>
                 </div>
                 {/*Benefit */}
                 <ul className={styles.benefits}>
-                  {item.benefits.map((label, index) => (
+                  {item?.planFeatures?.map((label, index) => (
                     <li key={index} className={`${styles.benefit} ${styles.available}`}>
-                      {label.available ? (
-                        <IoIosCheckmarkCircle fontSize={24} color={item.info.name == 'CƠ BẢN' ? 'black' : '#F1F3E7'} />
+                      {label?.isEnabled ? (
+                        <IoIosCheckmarkCircle fontSize={24} color={item.name == 'Gói cơ bản' ? 'black' : '#F1F3E7'} />
                       ) : (
                         <IoIosCloseCircle fontSize={24} color="red" />
                       )}{' '}
-                      {label.label}
+                      {label?.feature.name}
                     </li>
                   ))}
                 </ul>
 
                 {/* Button */}
                 <div className={styles.actions}>
-                  <button className={styles['trial-btn']}>Bắt đầu dùng thử miễn phí 14 ngày</button>
+                  <button className={styles['trial-btn']}>Đăng ký ngay</button>
                   <p className={styles.note}>Không yêu cầu thẻ tín dụng</p>
                 </div>
               </div>

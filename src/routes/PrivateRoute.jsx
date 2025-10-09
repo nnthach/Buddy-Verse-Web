@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
     return <Navigate to="/auth/login" />;
   }
 
-  if (userInfo.role !== 'admin') {
+  if (userInfo.role !== 'Admin') {
     return <Navigate to="/" />;
   }
 

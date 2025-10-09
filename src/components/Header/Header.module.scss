@@ -73,6 +73,59 @@
       p {
         color: $beige-primary-color;
       }
+
+      .user-wrap {
+        text-align: right;
+        width: 100%;
+        position: relative;
+
+        &:hover .dropdown-menu {
+          display: block;
+        }
+
+        &::after {
+          display: block;
+          content: '';
+          width: 180px;
+          height: 30px;
+          position: absolute;
+          right: 0;
+        }
+
+        p {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          background-color: white;
+          padding: 5px 10px;
+          border-radius: 10px;
+          right: 0;
+          top: 30px;
+          box-shadow: $box-shadow-default;
+          display: none;
+          z-index: 2;
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+          p {
+            text-decoration: none;
+            padding: 5px;
+            color: black;
+
+            &:hover {
+              background-color: rgb(231, 231, 231);
+              border-radius: 10px;
+            }
+          }
+        }
+      }
       .get-start {
         background-color: rgba(212, 212, 212, 0.3);
         padding: 6px 10px;

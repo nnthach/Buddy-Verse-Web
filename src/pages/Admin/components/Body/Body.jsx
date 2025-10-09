@@ -8,6 +8,7 @@ import Feedbacks from '~/pages/Admin/components/Body/content/Feedbacks/Feedbacks
 import Reports from '~/pages/Admin/components/Body/content/Reports/Reports';
 import Setting from '~/pages/Admin/components/Body/content/Setting/Setting';
 import Quest from '~/pages/Admin/components/Body/content/Quest/Quest';
+import FeatureAndPlan from '~/pages/Admin/components/Body/content/FeatureAndPlan/FeatureAndPlan';
 
 function Body({ content }) {
   const contentRender = () => {
@@ -24,6 +25,8 @@ function Body({ content }) {
         return <Reports />;
       case 'quest':
         return <Quest />;
+      case 'feature':
+        return <FeatureAndPlan />;
       case 'setting':
         return <Setting />;
     }

@@ -1,47 +1,47 @@
 import { useState } from 'react';
-import styles from './Interest.module.scss';
-import { deleteInterestAPI, getInterestListAPI } from '~/services/interestService';
-import InterestModal from '~/pages/Admin/components/Body/content/Setting/components/Interest/InterestModal/InterestModal';
+import styles from './Feature.module.scss';
 import { CiEdit, CiTrash } from 'react-icons/ci';
 import { toast } from 'react-toastify';
 import Pagination from '~/components/Pagination/Pagination';
 import useFetchList from '~/hooks/useFetchList';
 import { Spin } from 'antd';
+import { deleteFeatureAPI, getFeatureListAPI } from '~/services/featureService';
+import FeatureModal from '~/pages/Admin/components/Body/content/FeatureAndPlan/Feature/FeatureModal/FeatureModal';
 
-function Interest() {
-  const { data: interestList, loading, refresh } = useFetchList(getInterestListAPI);
+function Feature() {
+  const { data: featureList, loading, refresh } = useFetchList(getFeatureListAPI);
 
   const [openModal, setOpenModal] = useState('');
-  const [interestId, setInterestId] = useState('');
+  const [featureId, setFeatureId] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProduct = interestList?.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProduct = featureList?.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  const handleDeleteInterest = async (id) => {
-    const isConfirm = window.confirm('Bạn có chắc chắn muốn xóa sở thích này?');
+  const handleDeleteFeature = async (id) => {
+    const isConfirm = window.confirm('Bạn có chắc chắn muốn xóa tinh nang này?');
     if (!isConfirm) return;
 
     try {
-      const res = await deleteInterestAPI(id);
-      console.log('delete interest res', res);
+      const res = await deleteFeatureAPI(id);
+      console.log('delete feature res', res);
 
       await refresh();
       toast.success(res.data.message);
     } catch (error) {
-      console.log('delete interest', error);
+      console.log('delete feature', error);
     }
   };
 
   return (
     <>
       <div className={styles.wrap}>
-        <div className={styles['interest-wrap']}>
+        <div className={styles['feature-wrap']}>
           <div className={styles.heading}>
-            <h3>Danh sách sở thích</h3>
+            <h3>Danh sách tính năng</h3>
             <button onClick={() => setOpenModal('create')}>Thêm mới</button>
           </div>
 
@@ -50,10 +50,8 @@ function Interest() {
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Hình ảnh</th>
                   <th>Tên</th>
                   <th>Mô tả</th>
-                  <th>Ngày tạo</th>
                   <th>Hành động</th>
                 </tr>
               </thead>
@@ -66,21 +64,17 @@ function Interest() {
                   </tr>
                 ) : (
                   currentProduct.map((item) => (
-                    <tr key={item.interestId}>
-                      <td>{item.interestId}</td>
-                      <td>
-                        <img src={item.image} style={{ width: 50, height: 50, objectFit: 'cover' }} />
-                      </td>
-                      <td style={{ fontWeight: 550 }}>{item.name}</td>
-                      <td>{item.description}</td>
-                      <td>{item.createdAt}</td>
+                    <tr key={item.id}>
+                      <td>{item.id}</td>
+                      <td style={{ fontWeight: 550 }}>{item?.name}</td>
+                      <td>{item?.description}</td>
                       <td>
                         <CiEdit
                           size={24}
                           color="blue"
                           style={{ marginRight: 10, cursor: 'pointer' }}
                           onClick={() => {
-                            setInterestId(item.interestId);
+                            setFeatureId(item.id);
                             setOpenModal('edit');
                           }}
                         />
@@ -88,7 +82,7 @@ function Interest() {
                           size={24}
                           color="red"
                           style={{ cursor: 'pointer' }}
-                          onClick={() => handleDeleteInterest(item.interestId)}
+                          onClick={() => handleDeleteFeature(item.id)}
                         />
                       </td>
                     </tr>
@@ -99,7 +93,7 @@ function Interest() {
 
             <Pagination
               productsPerPage={productsPerPage}
-              totalProducts={interestList?.length}
+              totalProducts={featureList?.length}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
@@ -108,16 +102,16 @@ function Interest() {
       </div>
 
       {openModal != '' && (
-        <InterestModal
+        <FeatureModal
           openModal={openModal}
           setOpenModal={setOpenModal}
           refreshList={refresh}
-          interestId={interestId}
-          setInterestId={setInterestId}
+          featureId={featureId}
+          setFeatureId={setFeatureId}
         />
       )}
     </>
   );
 }
 
-export default Interest;
+export default Feature;

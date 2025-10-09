@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-
   // Biểu mẫu đăng ký ban đầu
   const initialRegisterForm = {
     password: '',
@@ -48,6 +47,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('accessToken');
+    window.location.reload();
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -61,6 +67,7 @@ export const AuthProvider = ({ children }) => {
         submitRegisterForm,
         setSubmitRegisterForm,
         handleGetUserById,
+        handleLogout,
       }}
     >
       {children}

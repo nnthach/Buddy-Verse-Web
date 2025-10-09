@@ -16,6 +16,10 @@ export const publicRouters = [
     path: '/get-start',
     component: <GetStart />,
   },
+  {
+    path: '/admin',
+    component: <Admin />,
+  },
 ];
 
 export const privateRouters = [

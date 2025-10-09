@@ -8,7 +8,6 @@ import RegisterComponent from '~/pages/Auth/components/RegisterComponent/Registe
 import LoginComponent from '~/pages/Auth/components/LoginComponent/LoginComponent';
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { loginGoogleAPI } from '~/services/authService';
-import appLogo from '~/assets/images/applogo.png';
 import { toast } from 'react-toastify';
 
 function Auth() {

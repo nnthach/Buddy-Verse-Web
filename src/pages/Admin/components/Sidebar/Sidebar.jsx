@@ -35,6 +35,9 @@ function Sidebar({ content, setContent }) {
           <li className={content == 'quest' ? styles.active : undefined} onClick={() => setContent('quest')}>
             <IoChatboxOutline size={20} /> Nhiệm vụ
           </li>
+          <li className={content == 'feature' ? styles.active : undefined} onClick={() => setContent('feature')}>
+            <IoChatboxOutline size={20} /> Tính năng & gói
+          </li>
           <li className={content == 'reports' ? styles.active : undefined} onClick={() => setContent('reports')}>
             <MdOutlineErrorOutline size={22} /> Báo cáo
           </li>
