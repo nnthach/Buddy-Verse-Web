@@ -3,7 +3,6 @@
 
 .our-goals {
   width: 100%;
-  // background-color: $beige-primary-color;
   background-color: white;
   padding: 40px;
   @include flexBoxStyle(center, center, 0);
@@ -27,7 +26,7 @@
 
     h5 {
       text-align: center;
-      color: $purple-primary-color;
+      color: black;
       font-size: 30px;
       font-weight: 600;
 
@@ -40,7 +39,7 @@
     .tagline {
       margin-top: 5px;
       text-align: center;
-      color: $purple-primary-color;
+      color: black;
       font-size: 14px;
       opacity: 0.6;
       margin-bottom: 20px;

@@ -3,7 +3,7 @@
 
 .wrap {
   width: 100%;
-  background-color: $beige-primary-color;
+  background-color: white;
   padding: 60px 40px;
   @include flexBoxStyle(center, center, 0);
 
@@ -20,7 +20,7 @@
 
     h5 {
       text-align: center;
-      color: $purple-primary-color;
+      color: black;
       font-size: 30px;
       font-weight: 600;
 
@@ -33,7 +33,7 @@
     .tagline {
       margin-top: 5px;
       text-align: center;
-      color: $purple-primary-color;
+      color: black;
       font-size: 14px;
       opacity: 0.6;
       @include respond-to(phone) {
@@ -44,7 +44,7 @@
     .about-text {
       margin-top: 20px;
       text-align: justify;
-      color: $purple-primary-color;
+      color: black;
       line-height: 1.5;
       font-weight: 500;
 
@@ -87,7 +87,7 @@
           text-align: center;
           font-size: 15px;
           font-weight: 500;
-          color: $purple-primary-color;
+          color: black;
           line-height: 1.5;
           text-align: center;
 

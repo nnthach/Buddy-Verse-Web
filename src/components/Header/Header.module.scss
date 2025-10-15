@@ -3,7 +3,6 @@
 
 .wrap {
   background-color: transparent;
-  // background-color: blue;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,9 +21,12 @@
     height: 100%;
 
     .logo {
-      // background-color: red;
       height: 100%;
       width: 207px;
+
+      @include respond-to(phone) {
+        width: 107px;
+      }
 
       img {
         width: 100%;
@@ -36,7 +38,7 @@
       ul {
         @include flexBoxStyle(center, center, 40px);
         list-style: none;
-        color: $beige-primary-color;
+        color: white;
         font-weight: 500;
         font-size: larger;
 
@@ -66,12 +68,12 @@
       }
 
       a {
-        color: $beige-primary-color;
+        color: white;
         text-decoration: none;
         font-weight: 500;
       }
       p {
-        color: $beige-primary-color;
+        color: white;
       }
 
       .user-wrap {

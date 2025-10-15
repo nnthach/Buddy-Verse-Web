@@ -2,9 +2,12 @@ import { useContext } from 'react';
 import styles from './SideBar.module.scss';
 import { SideBarContext } from '~/context/SidebarContext';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '~/context/AuthContext';
 
 function SideBar() {
   const { setIsOpen, aboutRefSidebar, goalsRefSidebar, membershipRefSidebar } = useContext(SideBarContext);
+  const { userInfo, handleLogout } = useContext(AuthContext);
+
   const scrollTo = (ref) => {
     console.log('ref', ref);
     setIsOpen(false);
@@ -20,16 +23,32 @@ function SideBar() {
         <li onClick={() => scrollTo(goalsRefSidebar)}>Mục Tiêu Của Chúng Tôi</li>
         <li onClick={() => scrollTo(membershipRefSidebar)}>Thành Viên</li>
         <div className={styles.line} />
-        <li>
-          <Link to={'/auth/login'} onClick={() => setIsOpen(false)}>
-            Đăng Nhập
-          </Link>
-        </li>
-        <li>
-          <Link to={'/auth/register'} onClick={() => setIsOpen(false)}>
-            Bắt Đầu
-          </Link>
-        </li>
+        {userInfo ? (
+          <>
+            {userInfo.role == 'Admin' && (
+              <li>
+                <Link to={'/admin'}>Admin</Link>
+              </li>
+            )}
+            <li>
+              <Link to={'/account/detail'}>My Account</Link>
+            </li>
+            <li onClick={() => handleLogout()}>Đăng xuất</li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to={'/auth/login'} onClick={() => setIsOpen(false)}>
+                Đăng Nhập
+              </Link>
+            </li>
+            <li>
+              <Link to={'/auth/register'} onClick={() => setIsOpen(false)}>
+                Bắt Đầu
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );

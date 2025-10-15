@@ -35,7 +35,7 @@
 
       h5 {
         font-size: 20px;
-        color: $purple-primary-color;
+        color: black;
       }
 
       .close {
@@ -52,12 +52,12 @@
       gap: 14px;
 
       button {
-        @include btn(100%, auto, 12px, $purple-primary-color, white);
+        @include btn(100%, auto, 12px, black, white);
         padding: 10px 0;
         margin-top: 10px;
 
         &:hover {
-          @include hoverWhiteBtn($purple-third-color, white);
+          @include hoverWhiteBtn(black, white);
         }
       }
     }

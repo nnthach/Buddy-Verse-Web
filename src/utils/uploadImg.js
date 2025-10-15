@@ -3,7 +3,7 @@ import { storage } from '~/config/firebase';
 
 const uploadFile = async (file) => {
   console.log('OG file to upload', file);
-  const storageRef = ref(storage, `sdn_ass/${file.name}`);
+  const storageRef = ref(storage, file.name || `${Date.now()}.jpg`);
   console.log('storageRef', storageRef);
   const response = await uploadBytes(storageRef, file);
   console.log('response', response);

@@ -16,20 +16,20 @@
   }
 
   .content {
-    background-color: $beige-primary-color;
+    background-color: white;
     padding: 20px;
     border-radius: 20px;
     width: 350px;
     z-index: 1;
 
     h1 {
-      color: $purple-third-color;
+      color: black;
       font-size: 24px;
     }
     .sub-heading {
       text-align: left;
       margin-top: 8px;
-      color: $purple-primary-color;
+      color: black;
       opacity: 0.7;
     }
 
@@ -44,7 +44,7 @@
         padding: 5px 15px;
         @include flexBoxStyle(center, center, 0);
         border-radius: 10px;
-        background-color: $purple-primary-color;
+        background-color: black;
         opacity: 0.5;
         cursor: pointer;
 
@@ -58,14 +58,14 @@
       width: 100%;
       border: none;
       outline: none;
-      background-color: $purple-third-color;
+      background-color: black;
       cursor: pointer;
       color: white;
       padding: 10px 15px;
       border-radius: 15px;
 
       &:hover {
-        background-color: $purple-primary-color;
+        background-color: black;
       }
     }
 
@@ -74,7 +74,7 @@
       font-size: 14px;
       text-align: center;
       a {
-        color: $purple-primary-color;
+        color: black;
         margin: 0 auto;
         width: 100%;
         text-decoration: none;

@@ -3,7 +3,7 @@
 
 .wrap {
   width: 100%;
-  background-color: $beige-primary-color;
+  background-color: white;
   padding: 60px 40px;
   @include flexBoxStyle(center, center, 0);
 
@@ -20,7 +20,7 @@
 
     h5 {
       text-align: center;
-      color: $purple-primary-color;
+      color: black;
       font-size: 30px;
       font-weight: 600;
 
@@ -32,7 +32,7 @@
     .tagline {
       margin-top: 5px;
       text-align: center;
-      color: $purple-primary-color;
+      color: black;
       font-size: 14px;
       opacity: 0.6;
       @include respond-to(phone) {
@@ -63,16 +63,24 @@
           .trial-btn {
             background: black;
             color: white;
+            a {
+              color: white;
+              text-decoration: none;
+            }
           }
         }
 
         &.premium {
           background: linear-gradient(#4b164c30, #4b164c);
-          color: $beige-primary-color;
+          color: white;
 
           .trial-btn {
             background: rgba(253, 224, 71, 0.7); // yellow-300/70
             color: black;
+            a {
+              color: black;
+              text-decoration: none;
+            }
           }
         }
 
@@ -102,7 +110,7 @@
           .name {
             font-size: 1.4rem;
             font-weight: 600;
-            background-color: $beige-primary-color;
+            background-color: white;
             padding: 6px 8px;
             border-radius: 10px;
             color: black;

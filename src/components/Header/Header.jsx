@@ -59,7 +59,7 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
             <div className={styles['user-wrap']}>
               <p>{userInfo?.username}</p>
               <div className={styles['dropdown-menu']}>
-                {userInfo.roleId == 'c5b82656-c6a7-49bd-a3fb-3d3e07022d33' && (
+                {userInfo.role == 'Admin' && (
                   <p>
                     <Link to={'/admin'}>Admin</Link>
                   </p>
@@ -67,6 +67,7 @@ function Header({ aboutRef, goalsRef, membershipRef }) {
                 <p>
                   <Link to={'/account/detail'}>My Account</Link>
                 </p>
+
                 <p onClick={() => handleLogout()}>Sign Out</p>
               </div>
             </div>

@@ -3,7 +3,7 @@
 
 .wrap {
   position: fixed;
-  background-color: $beige-primary-color;
+  background-color: white;
   z-index: 200;
   width: 100%;
   height: 100vh;
@@ -19,7 +19,7 @@
 
     li {
       padding: 10px 0;
-      color: $purple-primary-color;
+      color: black;
       font-size: 20px;
     }
 
@@ -30,7 +30,7 @@
     .line {
       width: 100%;
       height: 1px;
-      background-color: rgb(214, 172, 245);
+      background-color: gray;
       margin: 10px 0;
     }
   }

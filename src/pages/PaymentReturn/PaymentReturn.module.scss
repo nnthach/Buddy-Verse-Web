@@ -1,0 +1,116 @@
+@use '~/styles/mixin.module.scss' as *;
+@use '~/styles/variable.module.scss' as *;
+
+.cartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f9fb;
+  padding: 20px;
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    max-width: 480px;
+    width: 100%;
+
+    .title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #222;
+    }
+
+    .info {
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      .name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .duration,
+      .price {
+        font-size: 1rem;
+        color: #555;
+        margin-top: 8px;
+
+        span {
+          font-weight: 600;
+          color: #111;
+        }
+      }
+    }
+
+    .features {
+      background: #f9fbff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        color: #333;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+        li {
+          font-size: 0.95rem;
+          color: #444;
+          padding: 4px 0;
+          display: flex;
+          align-items: center;
+
+          &::before {
+            content: '✓';
+            color: #4caf50;
+            margin-right: 8px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 20px;
+    }
+
+    .payBtn {
+      margin-top: 24px;
+      width: 100%;
+      background: linear-gradient(135deg, #007bff, #00b4d8);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background: linear-gradient(135deg, #0062cc, #0096c7);
+        transform: translateY(-1px);
+      }
+    }
+
+    .loading {
+      text-align: center;
+      padding: 50px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+  }
+}

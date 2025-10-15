@@ -20,11 +20,11 @@
       font-weight: 500;
     }
     .active {
-      color: $purple-primary-color;
+      color: black;
     }
 
     .activeAccount {
-      color: $purple-primary-color;
+      color: black;
     }
   }
 
@@ -37,7 +37,7 @@
       gap: 14px;
 
       button {
-        background-color: $purple-primary-color;
+        background-color: black;
         color: white;
         border: none;
         outline: none;
@@ -49,7 +49,7 @@
         transition: all 0.2s ease;
         font-size: 14px;
         &:hover {
-          background-color: $purple-third-color;
+          background-color: black;
         }
       }
     }
