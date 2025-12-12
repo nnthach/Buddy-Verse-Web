@@ -24,7 +24,9 @@ function Banner() {
 
         <div className={styles['logo-download']}>
           <img src={appstoreImg} />
-          <img src={chplayImg} />
+          <a target="_blank" href="https://drive.google.com/drive/folders/19C01g7vIHeMj9ZK3q62JQiLoVP7H2rJq">
+            <img src={chplayImg} />
+          </a>
         </div>
       </div>
     </div>

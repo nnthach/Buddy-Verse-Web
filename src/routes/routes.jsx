@@ -31,6 +31,10 @@ export const publicRouters = [
     path: '/payment/result/:type',
     component: <PaymentResult />,
   },
+  // {
+  //   path: '/admin',
+  //   component: <Admin />,
+  // },
 ];
 
 export const privateRouters = [

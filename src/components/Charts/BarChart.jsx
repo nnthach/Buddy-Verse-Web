@@ -2,39 +2,46 @@ import React from 'react';
 import styles from './Barchar.module.scss';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-// Dữ liệu biểu đồ doanh thu theo ngày
-const data = [
-  { name: 'T2', revenue: 4000 },
-  { name: 'T3', revenue: 3000 },
-  { name: 'T4', revenue: 2000 },
-  { name: 'T5', revenue: 2780 },
-  { name: 'T6', revenue: 1890 },
-  { name: 'T7', revenue: 2390 },
-  { name: 'CN', revenue: 3490 },
-];
+// ======= Thêm phần này =======
+const parsePrice = (price) => Number(price.replace(/\./g, ''));
 
-// Component biểu đồ doanh thu
-const RevenueChart = ({ heading, subHeading }) => {
+const getRevenueData = (orders) => {
+  const map = {};
+
+  orders.forEach((order) => {
+    const date = order.createdAt.split(' ')[0]; // "28-11-2025"
+    if (!map[date]) map[date] = 0;
+    map[date] += parsePrice(order.price);
+  });
+
+  return Object.entries(map).map(([date, revenue]) => ({
+    name: date.substring(0, 5), // "28-11"
+    revenue,
+  }));
+};
+// ===============================
+
+// Component
+const RevenueChart = ({ heading, subHeading, orders }) => {
+  const data = getRevenueData(orders); // <-- lấy dữ liệu thật
+
   return (
-    // Container chính của biểu đồ
     <div className={styles.chartContainer}>
-      {/* Tiêu đề và mô tả phụ */}
       <div className={styles.header}>
         <h3>{heading}</h3>
         <p>{subHeading}</p>
       </div>
 
-      {/* Biểu đồ responsive */}
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
-          {/* Lưới nền với đường nét đứt */}
           <CartesianGrid strokeDasharray="3 3" stroke={'#f0f0f0'} />
-          {/* Trục X hiển thị tên ngày */}
+
           <XAxis dataKey="name" stroke={'#6B7280'} fontSize={12} tickLine={false} axisLine={false} />
-          {/* Trục Y hiển thị giá trị doanh thu */}
+
           <YAxis stroke={'#6B7280'} fontSize={12} tickLine={false} axisLine={false} />
-          {/* Tooltip hiển thị thông tin khi hover */}
+
           <Tooltip
+            formatter={(value) => value.toLocaleString('vi-VN')}
             contentStyle={{
               backgroundColor: 'white',
               border: `1px solid #e5e7eb`,
@@ -43,7 +50,7 @@ const RevenueChart = ({ heading, subHeading }) => {
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
             }}
           />
-          {/* Thanh biểu đồ hiển thị doanh thu */}
+
           <Bar dataKey="revenue" fill={'#3b82f6'} radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
